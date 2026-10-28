@@ -3,7 +3,7 @@ const { chromium } = require('/tmp/node_modules/playwright');
 (async () => {
   const b = await chromium.launch(); const pg = await b.newPage({ viewport: { width: 1360, height: 900 } });
   const fehler = []; pg.on('pageerror', e => fehler.push(String(e))); pg.on('console', m => { if (m.type() === 'error') fehler.push(m.text()); });
-  await pg.goto('file:///workspace/Telegraphengleichung/Telegraphen_Labor_1.4.html');
+  await pg.goto('file:///workspace/Telegraphengleichung/Telegraphen_Labor_1.5.html');
   console.log('Titel:', await pg.title());
   const aus = {};
   for (const [name, o, schritte] of [['Leerlauf, Ri=0', { art: 'leerlauf', Ri: 0 }, 900], ['Ri=120, Za=1000', { art: 'wert', Za: 1000, Ri: 120 }, 1100], ['Gauss, Anpassung', { form: 'gauss', art: 'anpassung', Ri: 0, T: 1.5 }, 700]]) {
@@ -43,7 +43,28 @@ const { chromium } = require('/tmp/node_modules/playwright');
   await pg.click('#r-doku'); await pg.waitForTimeout(300);
   const dokuSichtbar = await pg.evaluate(() => ({ sichtbar: document.getElementById('ansicht-doku').offsetHeight > 500, mathml: document.querySelectorAll('#ansicht-doku math').length, bilder: document.querySelectorAll('#ansicht-doku img').length }));
   console.log('Manuskript-Reiter:', JSON.stringify(dokuSichtbar)); await pg.screenshot({ path: '/workspace/Telegraphengleichung/bilder/labor_manuskript.png' });
-  console.log('Seitenfehler:', fehler.length, fehler.slice(0, 2));
+  // --- Abnahme: die Seite muss RECHNEN, nicht nur laden. Harte Sollwerte, sonst Rückgabe 1. ---
+  const soll = [];
+  const pruef = (gut, text) => { soll.push((gut ? 'ok     ' : 'FEHLER ') + text); if (!gut) fehler.push('Abnahme: ' + text); };
+  await pg.evaluate(() => window.PRUEFSTAND.stellen({ d: 10, r0: 0.5, epsr: 1, l: 3, E0: 1, T: 2, Ri: 0, art: 'leerlauf', form: 'rechteck' }));
+  const a1 = await pg.evaluate(() => window.PRUEFSTAND.rechne(800));
+  pruef(a1.t_ns > 10, `die Zeit läuft: nach 800 Schritten t = ${a1.t_ns.toFixed(2)} ns (soll > 10)`);
+  pruef(a1.max_abw_V < 1e-9, `beide Wege decken sich: ${a1.max_abw_V.toExponential(2)} V (soll < 1e-9)`);
+  const a2 = await pg.evaluate(() => { const v0 = window.PRUEFSTAND.stand().t_ns; window.PRUEFSTAND.rechne(200); return { v0, v1: window.PRUEFSTAND.stand().t_ns }; });
+  pruef(a2.v1 > a2.v0, `weitere Schritte bringen die Zeit voran: ${a2.v0.toFixed(2)} → ${a2.v1.toFixed(2)} ns`);
+  const a3 = await pg.evaluate(async () => { const t0 = window.PRUEFSTAND.stand().t_ns; start();
+      await new Promise(r => setTimeout(r, 1200)); const t1 = window.PRUEFSTAND.stand().t_ns; halt(); return { t0, t1 }; });
+  pruef(a3.t1 > a3.t0, `der Start-Knopf treibt die Simulation: ${a3.t0.toFixed(2)} → ${a3.t1.toFixed(2)} ns`);
+  const a4 = await pg.evaluate(async () => { window.PRUEFSTAND.stern.stellen({ rart: 'opt' }); const t0 = window.PRUEFSTAND.stern.stand().t_ns;
+      sternStart(); await new Promise(r => setTimeout(r, 1200)); const t1 = window.PRUEFSTAND.stern.stand().t_ns; sternHalt();
+      const r = window.PRUEFSTAND.stern.rechne(300); return { t0, t1, abw: r.max_abw_V }; });
+  pruef(a4.t1 > a4.t0, `der Start-Knopf der Verzweigung läuft: ${a4.t0.toFixed(2)} → ${a4.t1.toFixed(2)} ns`);
+  pruef(a4.abw < 1e-9, `Verzweigung: beide Wege decken sich: ${a4.abw.toExponential(2)} V`);
+  const a5 = await pg.evaluate(() => window.PRUEFSTAND.rechenweg());
+  pruef(a5.schritte === 16, `Reiter Rechenweg zeigt ${a5.schritte} Schritte (soll 16)`);
+  console.log('Abnahme:\n  ' + soll.join('\n  '));
+  console.log('Seitenfehler:', fehler.length, fehler.slice(0, 3));
   require('fs').writeFileSync('/workspace/Telegraphengleichung/labor/pruefe_seite.json', JSON.stringify({ aus, dokuSichtbar, fehler }));
   await b.close();
+  process.exit(fehler.length ? 1 : 0);      // die Prüfung endet mit Fehler, wenn die Seite nicht rechnet
 })();

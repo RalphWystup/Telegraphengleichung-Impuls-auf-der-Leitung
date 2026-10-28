@@ -1,6 +1,6 @@
 ---
 title: "Die Telegraphengleichung — von den Maxwellschen Gleichungen zum Impuls auf der Leitung"
-subtitle: "Zwei getrennte, geschlossene Lösungswege: Laplace in der Zeit mit dem Verschiebungssatz, und die doppelte Laplace-Transformation. Fassung 1.3, 28. Oktober 2026"
+subtitle: "Zwei getrennte, geschlossene Lösungswege: Laplace in der Zeit mit dem Verschiebungssatz, und die doppelte Laplace-Transformation. Fassung 1.4, 28. Oktober 2026"
 author: "Prof. Dr.-Ing. Ralph Wystup, M.Sc. — erarbeitet zusammen mit der KI (Claude, Anthropic); jede Gleichung mit einem CAS-Skript nachgerechnet"
 lang: de
 documentclass: article
@@ -833,7 +833,7 @@ Zelle weiter. Ein Befund aus dem Bau des Skripts: Behandelt man den Widerstandsz
 explizit oder nimmt die Quellspannung nur zur Schrittzeit statt gemittelt über den Schritt, weicht die
 Lösung um 0,25 bis 1 V ab (Zeitlage um einen halben Schritt, bei $Z_w/R_i > 2$ Instabilität); erst die
 Trapezregel an beiden Enden macht alle sieben Fälle auf $10^{-13}$ V gleich. Derselbe Kern, in JavaScript
-übertragen, treibt die Laborseite `Telegraphen_Labor_1.4.html` (Reiter Labor: Impuls, Quelle mit $R_i$,
+übertragen, treibt die Laborseite `Telegraphen_Labor_1.5.html` (Reiter Labor: Impuls, Quelle mit $R_i$,
 Abschluss $Z_a$, Wellenwiderstand live, Impulslänge, feine Spannungsskala mit der Amplitude an jedem Impuls, Zeitlupe;
 Reiter Verzweigung: Sternpunkt 1 auf 2 mit $R$; Reiter Rechenweg: siehe unten; Reiter Manuskript: dieser Text); beide Wege werden dort live gegeneinander
 gezeichnet, und `labor/pruefe_kern.js` hält den Kern in Node gegen die Python-Zahlen ($\le 8\cdot 10^{-15}$ V).
@@ -971,6 +971,16 @@ Arbeit übertragen lässt.
    explizit gerechnet weicht die Lösung um 0,25 bis 1 V ab und wird für $Z_w/R_i > 2$ instabil.
 6. **Folien 9 und 10 der Vorlesungspräsentation** tragen die Integralform des Durchflutungssatzes mit einem
    Minuszeichen; richtig ist das Pluszeichen (siehe Quellen).
+7. **Die Laborseite 1.4 rechnete nicht** und wurde zurückgezogen. Die Hilfsfunktion des neuen Reiters hieß
+   `schritt()` — genauso wie der Zeitschritt des Labors, der dadurch überschrieben wurde: Start, Schritt und
+   jede Rechnung liefen ins Leere. Aufgefallen ist es dem Auftraggeber, nicht der Prüfung, denn die prüfte
+   nur, *dass* die Seite lädt und *dass* kein Fehler in der Konsole steht — beides war der Fall, weil eine
+   überschriebene Funktion in JavaScript keinen Fehler wirft. Zwei Prüfmittel sind daraus entstanden:
+   `labor/vollprobe.js` spielt alle 55 Bedienschritte durch (jeder Reiter, jeder Knopf, jede Eingabe bis an
+   die Ränder) und meldet jeden Schritt, der länger als vier Sekunden braucht; `labor/pruefe_seite.js` nimmt
+   die Seite seitdem mit **harten Sollwerten** ab — die Zeit muss laufen, beide Wege müssen sich auf $10^{-9}$ V
+   decken, beide Startknöpfe müssen die Simulation vorantreiben — und endet mit Fehler, wenn eines davon nicht
+   stimmt. Eine Seite, die lädt, ist noch keine Seite, die rechnet.
 
 # Zusammenfassung für die Hand
 

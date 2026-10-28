@@ -6,16 +6,16 @@ mit MathML und eingebetteten Bildern). Rechenkern: labor/labor_kern.js (in Node 
 import json, re, subprocess, time, base64
 from pathlib import Path
 H = Path(__file__).resolve().parent
-FASSUNG = "1.4"; STAND = "28.10.2026"
+FASSUNG = "1.5"; STAND = "28.10.2026"
 kern = (H / "labor" / "labor_kern.js").read_text(encoding="utf-8").split("if (typeof module !== 'undefined')")[0]
 # Manuskript als HTML-Rumpf mit MathML und eingebetteten Bildern
 r = subprocess.run(["pandoc", "MANUSKRIPT_TELEGRAPHENGLEICHUNG.md", "-s", "--embed-resources", "--mathml", "-o", "-"], cwd=H, capture_output=True, text=True)
 doku = re.search(r"<body[^>]*>(.*)</body>", r.stdout, re.S).group(1)
 doku = doku.replace("<script", "<!--script").replace("</script>", "</script-->")       # kein Fremdskript im Reiter
 REVISION = json.dumps({"revision": f"Telegraphen_Labor_{FASSUNG}", "datum": STAND, "projekt": "Telegraphengleichung",
-    "gebaut_von": ["baue_labor.py (labor/labor_kern.js + MANUSKRIPT_TELEGRAPHENGLEICHUNG.md)"], "aenderungen": ["1.1: Quellenwiderstand als beschriftetes Eingabefeld mit Vorgaben 0 und Z_w; Oszilloskop mit Achsenmarken, Zeitzeiger und Erklaerung", "1.2: Wellenwiderstand, v und tau0 live bei der Leitung; Knoepfe R_i = Z_w, Z_a = Z_w (als Wert) und beide anpassen; Impulsdauer mit Impulslaenge v*T; Gaussimpuls nach Gl. 7.1 mit sigma(t)", "1.4: Reiter Rechenweg — jeder Schritt der Simulation mit seiner Gleichungsnummer und den eingestellten Zahlen", "1.3: Reiter Verzweigung (Sternpunkt 1 auf 2, ein R fuer alle drei Zweige, optimal oder frei, eigener Start); feine Spannungsskala (1-2-5-Raster) und Amplitude jedes Impulses direkt am Impuls; Ersatzschaltbild im Manuskript berichtigt"],
+    "gebaut_von": ["baue_labor.py (labor/labor_kern.js + MANUSKRIPT_TELEGRAPHENGLEICHUNG.md)"], "aenderungen": ["1.1: Quellenwiderstand als beschriftetes Eingabefeld mit Vorgaben 0 und Z_w; Oszilloskop mit Achsenmarken, Zeitzeiger und Erklaerung", "1.2: Wellenwiderstand, v und tau0 live bei der Leitung; Knoepfe R_i = Z_w, Z_a = Z_w (als Wert) und beide anpassen; Impulsdauer mit Impulslaenge v*T; Gaussimpuls nach Gl. 7.1 mit sigma(t)", "1.4: Reiter Rechenweg — jeder Schritt der Simulation mit seiner Gleichungsnummer und den eingestellten Zahlen (ZURUECKGEZOGEN: die Hilfsfunktion des Reiters hiess schritt() wie der Zeitschritt des Labors und hat ihn ueberschrieben — die Seite rechnete nicht mehr)", "1.5: derselbe Reiter, Hilfsfunktion in wegschritt() umbenannt; labor/vollprobe.js spielt alle Bedienelemente durch, labor/pruefe_seite.js nimmt die Seite mit harten Sollwerten ab (die Zeit muss laufen, beide Wege muessen sich decken)", "1.3: Reiter Verzweigung (Sternpunkt 1 auf 2, ein R fuer alle drei Zweige, optimal oder frei, eigener Start); feine Spannungsskala (1-2-5-Raster) und Amplitude jedes Impulses direkt am Impuls; Ersatzschaltbild im Manuskript berichtigt"],
     "rechenregeln": ["Weg 1: Gl. 3.24 (Summe verzoegerter Impulse, Verschiebungssatz)", "Weg 2: Gl. 2.3/2.6 Leapfrog, dt = dx/v, Randknoten halbe Zellen mit Trapezregel", "Belaege Gl. 5.3/5.5", "Gaussimpuls Gl. 7.1, Impulslaenge Gl. 7.2"],
-    "pruefung": "labor/pruefe_kern.js (Node) gegen pruefung/impuls_auf_leitung.py: <= 3e-14 V in zehn Faellen (sechs Rechteck, ein Gauss, drei Verzweigung); pruefung/abdeckung.py weist nach, dass alle 18 Rechenregeln dieser Seite und alle 92 Gleichungen des Manuskripts mit dem CAS nachgerechnet sind"}, ensure_ascii=False, indent=1)
+    "pruefung": "labor/vollprobe.js (alle Knoepfe und Eingaben), labor/pruefe_seite.js (Abnahme im Browser), labor/pruefe_kern.js (Node) gegen pruefung/impuls_auf_leitung.py: <= 3e-14 V in zehn Faellen (sechs Rechteck, ein Gauss, drei Verzweigung); pruefung/abdeckung.py weist nach, dass alle 18 Rechenregeln dieser Seite und alle 92 Gleichungen des Manuskripts mit dem CAS nachgerechnet sind"}, ensure_ascii=False, indent=1)
 
 seite = r"""<meta charset="utf-8">
 <script type="application/json" id="revision">__REVISION__</script>
@@ -286,7 +286,7 @@ function sternZeichne(){
    Zahlen, die gerade eingestellt sind. Nichts hier rechnet selbst — die Werte kommen aus demselben Kern. ---- */
 function zz(v, n, e){ if(v===Infinity) return '∞'; if(Math.abs(v)<1e-12) v=0;   // Rundungsreste sind null, nicht -7,9e-17
   return (Math.abs(v)>=1e4||(Math.abs(v)<1e-3&&v!==0)) ? v.toExponential(n===undefined?3:n)+(e||'') : v.toFixed(n===undefined?3:n)+(e||''); }
-function schritt(nr, titel, gl, formel, zahlen, warum){
+function wegschritt(nr, titel, gl, formel, zahlen, warum){   // NICHT schritt() nennen: so hiess schon der Zeitschritt des Labors
   return `<div class="schritt"><div class="nr">${nr}</div><div><span class="titel">${titel}</span>`+
          (gl?`<span class="gl">Gl. ${gl}</span>`:'')+
          `<div class="formel">${formel}</div><div class="zahlen">${zahlen}</div>`+
@@ -298,15 +298,15 @@ function rechenweg(){
   const q=Math.log(d/r0), ra=(P.Za===Infinity)?1:(P.Za-P.Zw)/(P.Za+P.Zw), rq=(P.Ri-P.Zw)/(P.Ri+P.Zw);
   const teiler=P.Zw/(P.Ri+P.Zw), tau0=l/P.v, form=$('form').value;
   $('wegA').innerHTML =
-    schritt(1,'Kapazitätsbelag aus der Geometrie','5.3',
+    wegschritt(1,'Kapazitätsbelag aus der Geometrie','5.3',
       "C' = π·ε_r·ε₀ / ln(d/r₀)",
       `C' = π · ${er} · 8,854·10⁻¹² / ln(${d}/${r0}) = π · ${er} · 8,854·10⁻¹² / ${zz(q,4)} = ${zz(P.C1*1e12,4,' pF/m')}`,
       'Die Näherung gilt für d ≫ r₀; exakt stünde arcosh(d/2r₀) statt ln(d/r₀) — 0,08 % Unterschied bei diesen Maßen.') +
-    schritt(2,'Induktivitätsbelag aus derselben Geometrie','5.5',
+    wegschritt(2,'Induktivitätsbelag aus derselben Geometrie','5.5',
       "L' = (μ₀/π)·ln(d/r₀)",
       `L' = (4π·10⁻⁷/π) · ${zz(q,4)} = ${zz(P.L1*1e6,4,' µH/m')}`,
       'Dieselbe Geometriefunktion wie bei C′, nur im Zähler statt im Nenner — deshalb kürzt sie sich in v heraus.') +
-    schritt(3,'Wellenwiderstand und Ausbreitungsgeschwindigkeit','5.6, 5.7',
+    wegschritt(3,'Wellenwiderstand und Ausbreitungsgeschwindigkeit','5.6, 5.7',
       "Z_w = √(L'/C')     v = 1/√(L'C')",
       `Z_w = √(${zz(P.L1*1e6,4)}·10⁻⁶ / ${zz(P.C1*1e12,4)}·10⁻¹²) = ${zz(P.Zw,2,' Ω')}\n`+
       `v = 1/√(L'C') = ${zz(P.v/1e8,4)}·10⁸ m/s     τ₀ = l/v = ${zz(tau0*1e9,3,' ns')} bei l = ${l} m`,
@@ -320,50 +320,50 @@ function rechenweg(){
     g *= rq*ra; if(Math.abs(g)<1e-6) break;
   }
   $('wegB').innerHTML =
-    schritt(4,'Reflexionsfaktor am Abschluss','3.21',
+    wegschritt(4,'Reflexionsfaktor am Abschluss','3.21',
       'r_a = (Z_a − Z_w)/(Z_a + Z_w)',
       `Z_a = ${P.Za===Infinity?'∞ (Leerlauf)':zz(P.Za,2,' Ω')}   →   r_a = ${zz(ra,4)}`,
       'r_a = +1 bei Leerlauf, −1 bei Kurzschluss, 0 bei Anpassung.') +
-    schritt(5,'Reflexionsfaktor am Generator und Eingangsteiler','3.23',
+    wegschritt(5,'Reflexionsfaktor am Generator und Eingangsteiler','3.23',
       'r_q = (R_i − Z_w)/(R_i + Z_w)      Teiler = Z_w/(R_i + Z_w)',
       `R_i = ${zz(P.Ri,2,' Ω')}   →   r_q = ${zz(rq,4)}   Teiler = ${zz(teiler,4)}`,
       'Die Leitung wirkt am Eingang wie der Widerstand Z_w — deshalb der Spannungsteiler.') +
-    schritt(6,'Die Quelle liefert den Impuls e(t)', form==='gauss'?'7.1':'',
+    wegschritt(6,'Die Quelle liefert den Impuls e(t)', form==='gauss'?'7.1':'',
       form==='gauss' ? 'e(t) = E₀·exp(−(t−2T)²/2σ²)·σ(t),  σ = T/(2√(2 ln2))'
                      : 'e(t) = E₀ für 0 ≤ t < T, sonst 0',
       form==='gauss' ? `E₀ = ${E0} V, T = ${zz(T*1e9,2)} ns (Halbwertsbreite), σ = ${zz(T/2.3548*1e9,3)} ns, Scheitel bei ${zz(2*T*1e9,2)} ns`
                      : `E₀ = ${E0} V, T = ${zz(T*1e9,2)} ns   →   Impulslänge auf der Leitung v·T = ${zz(P.v*T,3,' m')}`,
       'Der Faktor σ(t) ist Voraussetzung des Verschiebungssatzes: vor t = 0 ist die Leitung in Ruhe.') +
-    schritt(7,'Die Reihe der verzögerten Impulse','3.24',
+    wegschritt(7,'Die Reihe der verzögerten Impulse','3.24',
       'u(x,t) = Z_w/(R_i+Z_w) · Σₙ (r_q·r_a)ⁿ [ e(t − (2nl+x)/v) + r_a·e(t − (2(n+1)l−x)/v) ]',
       `für x = l/2 = ${zz(l/2,3)} m lauten die ersten Glieder:\n${glieder}`,
       'Jedes Glied ist derselbe Impuls, nur später und kleiner — mehr steckt nicht dahinter.') +
-    schritt(8,'Rücktransformation: der Verschiebungssatz','3.18, 3.19',
+    wegschritt(8,'Rücktransformation: der Verschiebungssatz','3.18, 3.19',
       'ℒ{f(t−T)·σ(t−T)} = e^(−sT)·F(s)   ⟹   u(x,t) = e(t − √(L′C′)·x)',
       `Laufzeit bis x: τ(x) = √(L'C')·x;  bis zum Ende τ₀ = ${zz(tau0*1e9,3,' ns')}`,
       'Der Faktor e^(−sτ) im Bildbereich IST die Verzögerung im Zeitbereich — keine Tabelle nötig.');
   // ---- Weg 2
   const dt=Z.dt, dx=Z.dx;
   $('wegC').innerHTML =
-    schritt(9,'Das Gitter und der Zeitschritt','',
+    wegschritt(9,'Das Gitter und der Zeitschritt','',
       'Δx = l/N,   Δt = Δx/v   (Courant-Zahl 1)',
       `N = ${N} Zellen,  Δx = ${zz(dx*1000,4,' mm')},  Δt = ${zz(dt*1e12,2,' ps')},  Schritte bis 8τ₀: ${Math.round(8*tau0/dt)}`,
       'Bei Δt = Δx/v springt der Impuls je Schritt genau eine Zelle weiter — dann ist das Verfahren exakt.') +
-    schritt(10,'Strom-Halbschritt aus der ersten Leitungsgleichung','2.3',
+    wegschritt(10,'Strom-Halbschritt aus der ersten Leitungsgleichung','2.3',
       '∂u/∂x = −L′·∂i/∂t   ⟹   i_k ← i_k − (Δt/L′)·(u_{k+1} − u_k)/Δx',
       `Δt/L' = ${zz(dt/P.L1,3)} ;  der Strom auf halben Zellen wird aus dem Spannungsgefälle fortgeschrieben`,
       'Spannung an den Knoten, Strom dazwischen — versetzt, daher „Leapfrog".') +
-    schritt(11,'Spannungs-Halbschritt aus der zweiten Leitungsgleichung','2.6',
+    wegschritt(11,'Spannungs-Halbschritt aus der zweiten Leitungsgleichung','2.6',
       '∂i/∂x = −C′·∂u/∂t   ⟹   u_k ← u_k − (Δt/C′)·(i_k − i_{k−1})/Δx',
       `Δt/C' = ${zz(dt/P.C1,3)} ;  nur die inneren Knoten, die Ränder folgen gesondert`,
       'Genau die beiden Gleichungen, aus denen Weg 1 die Telegraphengleichung gewonnen hat.') +
-    schritt(12,'Der Randknoten an der Quelle (halbe Zelle, Trapezregel)','2.3, 3.23',
+    wegschritt(12,'Der Randknoten an der Quelle (halbe Zelle, Trapezregel)','2.3, 3.23',
       P.Ri===0 ? 'R_i = 0:  u₀ ← e(t)   (die Quelle prägt die Spannung ein)'
                : "u₀ ← [ (R_i−Z_w)·u₀ + Z_w·(e(t)+e(t−Δt)) − 2·R_i·Z_w·i₀ ] / (R_i+Z_w)",
       P.Ri===0 ? `R_i = 0 Ω — am Generator wird mit r_q = −1 reflektiert`
                : `R_i = ${zz(P.Ri,2,' Ω')},  Z_w = ${zz(P.Zw,2,' Ω')}  →  dieselbe Reflexion r_q = ${zz(rq,4)} wie in Weg 1`,
       'Gemessen: ohne Trapezregel (explizit, oder Quellspannung nicht gemittelt) weicht die Lösung um 0,25 bis 1 V ab.') +
-    schritt(13,'Der Randknoten am Abschluss','3.21',
+    wegschritt(13,'Der Randknoten am Abschluss','3.21',
       P.Za===Infinity ? 'Leerlauf:  u_N ← u_N + 2·Z_w·i_{N−1}' :
       (P.Za===0 ? 'Kurzschluss:  u_N ← 0' : 'u_N ← [ (Z_a−Z_w)·u_N + 2·Z_a·Z_w·i_{N−1} ] / (Z_a+Z_w)'),
       `Z_a = ${P.Za===Infinity?'∞':zz(P.Za,2,' Ω')}  →  r_a = ${zz(ra,4)} — derselbe Faktor, den Weg 1 in die Reihe setzt`,
@@ -371,15 +371,15 @@ function rechenweg(){
   // ---- Verzweigung
   const Ropt=LABOR.stern(P,0).Ropt, sR=(typeof SR==='number'&&SZ)?SR:Ropt, s=LABOR.stern(P,sR);
   $('wegD').innerHTML =
-    schritt(14,'Was Leitung 1 am Sternpunkt sieht','6.12',
+    wegschritt(14,'Was Leitung 1 am Sternpunkt sieht','6.12',
       'Z_ein = R + (R + Z)/(n − 1)',
       `R = ${zz(sR,2,' Ω')},  n = 3 Zweige  →  Z_ein = ${zz(s.Zein,2,' Ω')}   (reflexionsfrei wäre R = (n−2)/n·Z = ${zz(Ropt,2,' Ω')})`,
       'R in Reihe mit der Parallelschaltung der beiden anderen Zweige zu je R + Z.') +
-    schritt(15,'Reflexion und Durchlass am Stern','6.13, 6.16',
+    wegschritt(15,'Reflexion und Durchlass am Stern','6.13, 6.16',
       'r = (Z_ein − Z)/(Z_ein + Z)      t = (1 − r)/(n − 1)',
       `r = ${zz(s.r,4)},  t = ${zz(s.t,4)} je abgehender Leitung`,
       'Bei R = Z_w/3 ist r = 0 und t = ½: die halbe Spannung läuft weiter, die halbe Leistung wird in den drei Widerständen zu Wärme.') +
-    schritt(16,'Der Sternknoten im Zeitschritt','7.3a, 7.3b, 7.4, 7.5',
+    wegschritt(16,'Der Sternknoten im Zeitschritt','7.3a, 7.3b, 7.4, 7.5',
       "u_S′ = (Z_w/n)·Σ b_k ,   u_k′ = (b_k + u_S′/R)/(1/Z_w + 1/R)",
       sR===0 ? 'R = 0: die drei Endknoten fallen zu einem zusammen, u′ = u + (2Z_w/n)·Σ i_k  (7.5)'
              : `mit b_k = 2·i_k + u_k·(1/Z_w − 1/R) + u_S/R;  R = ${zz(sR,2,' Ω')}`,

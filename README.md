@@ -4,7 +4,7 @@
 
 Prof. Dr.-Ing. Ralph Wystup M.Sc. — erstellt mit KI und Agent (Claude Code, Anthropic)
 
-**Seite öffnen:** https://ralphwystup.github.io/Telegraphengleichung-Impuls-auf-der-Leitung/ — das Telegraphen-Labor 1.4: ein Impuls läuft über eine Doppelleitung, gerechnet
+**Seite öffnen:** https://ralphwystup.github.io/Telegraphengleichung-Impuls-auf-der-Leitung/ — das Telegraphen-Labor 1.5: ein Impuls läuft über eine Doppelleitung, gerechnet
 nach den im Manuskript hergeleiteten Regeln, auf zwei Wegen live gegeneinander (geschlossene Lösung mit dem
 Verschiebungssatz und Zeitschrittverfahren); Quelle mit Innenwiderstand, Abschluss, Sternpunkt-Verteiler, Zeitlupe;
 das Manuskript als Reiter in der Seite. Läuft offline.
@@ -18,16 +18,16 @@ CAS-Skript nachgerechnet (115 von 115 RICHTIG), der Impuls im Zeitbereich ohne L
 
 ![Der Impuls auf der angepassten Leitung](bilder/impuls_momentaufnahmen.png)
 
-**Manuskript:** [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.3.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.3.pdf) — Manuskript 1.3 · Labor 1.4 · 28. Oktober 2026. **Beamer-Fassung:** [`BEAMER_TELEGRAPHENGLEICHUNG_1.3.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.3.pdf) — derselbe Text,
+**Manuskript:** [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.4.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.4.pdf) — Manuskript 1.4 · Labor 1.5 · 28. Oktober 2026. **Beamer-Fassung:** [`BEAMER_TELEGRAPHENGLEICHUNG_1.4.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.4.pdf) — derselbe Text,
 entzerrt auf Folien, nichts weggelassen.
 
 ## Was drin ist
 
 | Datei | Inhalt |
 |:--|:--|
-| [`Telegraphen_Labor_1.4.html`](Telegraphen_Labor_1.4.html) | das Telegraphen-Labor: Reiter Labor (Impuls, R_i, Z_a, Zeitlupe), Verzweigung (Sternpunkt 1 auf 2 mit R), Manuskript |
-| [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.3.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.3.pdf) / [`.md`](MANUSKRIPT_TELEGRAPHENGLEICHUNG.md) | das Manuskript: Maxwell → Wellengleichung, Weg A, Weg B, Beläge, Stoßstellen, Prüfung, Zusammenfassung |
-| [`BEAMER_TELEGRAPHENGLEICHUNG_1.3.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.3.pdf) | die Beamer-Fassung (16:9), gesetzt aus derselben Quelle |
+| [`Telegraphen_Labor_1.5.html`](Telegraphen_Labor_1.5.html) | das Telegraphen-Labor: Reiter Labor (Impuls, R_i, Z_a, Zeitlupe), Verzweigung (Sternpunkt 1 auf 2 mit R), Manuskript |
+| [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.4.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.4.pdf) / [`.md`](MANUSKRIPT_TELEGRAPHENGLEICHUNG.md) | das Manuskript: Maxwell → Wellengleichung, Weg A, Weg B, Beläge, Stoßstellen, Prüfung, Zusammenfassung |
+| [`BEAMER_TELEGRAPHENGLEICHUNG_1.4.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.4.pdf) | die Beamer-Fassung (16:9), gesetzt aus derselben Quelle |
 | `labor/` | der Rechenkern der Seite (`labor_kern.js`) und seine Prüfungen in Node und im Browser |
 | `pruefung/` | CAS-Skript (sympy) mit Ergebnis, Abdeckungsnachweis, Zeitbereichsrechnung mit Ergebnis, Bilderzeugung |
 | `bilder/` | die Bilder des Manuskripts |
