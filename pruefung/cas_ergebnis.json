@@ -1,0 +1,1044 @@
+{
+ "posten": [
+  {
+   "posten": "(1.3a) Vektoridentitaet rot rot E = grad div E - Laplace E",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.3a"
+   ]
+  },
+  {
+   "posten": "(1.3b) rot(-mu H_t) = -mu d/dt rot H (Vertauschbarkeit)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.3b"
+   ]
+  },
+  {
+   "posten": "(1.4) ebene Welle f(z - ct) e_x: div E = 0 und rot rot E + mu eps E_tt = 0",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.4"
+   ]
+  },
+  {
+   "posten": "(1.5) 1D: d2f/dz2 - (1/c^2) d2f/dt2 = 0 fuer f(z - ct)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.5"
+   ]
+  },
+  {
+   "posten": "(3.3) d2U/dx2 = (R'+sL')(G'+sC') U [Folie 4.34]",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.3"
+   ]
+  },
+  {
+   "posten": "(3.6) Ansatz e^(lambda x): lambda^2 - gamma^2 = 0",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.6"
+   ]
+  },
+  {
+   "posten": "(3.6) lambda = +-gamma",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.6"
+   ]
+  },
+  {
+   "posten": "(3.10) I = K1/Zw e^(-gx) - K2/Zw e^(gx)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.10"
+   ]
+  },
+  {
+   "posten": "(3.5)/(3.7) erfuellt von der allgemeinen Loesung",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.5",
+    "3.7"
+   ]
+  },
+  {
+   "posten": "(3.2) dI/dx = -(G'+sC') U erfuellt",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.2"
+   ]
+  },
+  {
+   "posten": "(3.12a) gamma = s sqrt(L'C'), Zw = sqrt(L'/C')",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.12a"
+   ]
+  },
+  {
+   "posten": "(3.16) K2 = 0, K1 = E",
+   "richtig": true,
+   "zusatz": "{K_1: E, K_2: 0}",
+   "gleichungen": [
+    "3.16"
+   ]
+  },
+  {
+   "posten": "(3.17) U = E e^(-s sqrt(L'C') x)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.17"
+   ]
+  },
+  {
+   "posten": "(3.19) Eingangswiderstand U(0)/I(0) = Zw",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.19"
+   ]
+  },
+  {
+   "posten": "(3.18)/(3.19) Verschiebungssatz: Rechteckimpuls kommt um tau verschoben, unverzerrt an",
+   "richtig": true,
+   "zusatz": "-E_0*(-Heaviside(t - tau) + Heaviside(-T + t - tau))",
+   "gleichungen": [
+    "3.18",
+    "3.19"
+   ]
+  },
+  {
+   "posten": "(3.20) v = x/tau = 1/sqrt(L'C')",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.20"
+   ]
+  },
+  {
+   "posten": "(3.21) Reflexionsfaktor am Ende r = (Za - Zw)/(Za + Zw)",
+   "richtig": true,
+   "zusatz": "(sqrt(C')*sqrt(L')*Z_a - L')/(sqrt(C')*sqrt(L')*Z_a + L')",
+   "gleichungen": [
+    "3.21"
+   ]
+  },
+  {
+   "posten": "(3.21) Leerlauf r -> +1, Kurzschluss r = -1, Anpassung r = 0",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.21"
+   ]
+  },
+  {
+   "posten": "(3.23) Quelle mit R_i: K1 = E Zw/(Ri+Zw) / (1 - r_q r_a e^(-2 gamma l))",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.23"
+   ]
+  },
+  {
+   "posten": "(3.23) Quelle mit R_i: K2 e^(gamma l) = r_a K1 e^(-gamma l)  (Reflexion am Ende)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.23"
+   ]
+  },
+  {
+   "posten": "(3.24) R_i = 0 gibt r_q = -1 und K1 -> E/(1 + r_a e^(-2 gamma l)); R_i = Zw gibt r_q = 0 und K1 = E/2",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.24"
+   ]
+  },
+  {
+   "posten": "(2.7) Telegraphengleichung im Zeitbereich: u_xx = L'C' u_tt + (R'C'+L'G') u_t + R'G' u",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "2.7"
+   ]
+  },
+  {
+   "posten": "(4.5) Weg B (Rand): Hbar = A(s) p/(p^2 - (s/c)^2)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.5"
+   ]
+  },
+  {
+   "posten": "(4.6) L^-1{p/(p^2-a^2)} = cosh(a z)",
+   "richtig": true,
+   "zusatz": "exp(a*z)*Heaviside(z)/2 + exp(-a*z)*Heaviside(z)/2",
+   "gleichungen": [
+    "4.6"
+   ]
+  },
+  {
+   "posten": "(4.7) Weg B (Rand): 1/2 a(t-z/c) + 1/2 a(t+z/c) erfuellt die Wellengleichung",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.7"
+   ]
+  },
+  {
+   "posten": "(4.7) Weg B (Rand): Randwert H(0,t) = a(t) und Steigung H_z(0,t) = 0 (die Annahme)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.7"
+   ]
+  },
+  {
+   "posten": "(4.7) Weg B (Rand): mit H_z(0,s) = -(s/c) A(s) bleibt nur A/(p + s/c), also a(t - z/c) (nur hinlaufend)",
+   "richtig": true,
+   "zusatz": "c*A(s)/(c*p + s)",
+   "gleichungen": [
+    "4.7"
+   ]
+  },
+  {
+   "posten": "(4.9) Weg B (Puls): Hbar = F(p) s/(s^2 - (c p)^2)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.9"
+   ]
+  },
+  {
+   "posten": "(4.10) L^-1{s/(s^2-a^2)} = cosh(a t)",
+   "richtig": true,
+   "zusatz": "exp(a*t)*Heaviside(t)/2 + exp(-a*t)*Heaviside(t)/2",
+   "gleichungen": [
+    "4.10"
+   ]
+  },
+  {
+   "posten": "(4.11) Weg B (Puls): 1/2 f(z-ct) + 1/2 f(z+ct) erfuellt Wellengleichung, H(z,0) = f(z), H_t(z,0) = 0",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.11"
+   ]
+  },
+  {
+   "posten": "(4.11) Gausspuls e^(-z^2): beide Haelften laufen mit c auseinander (Wellengleichung erfuellt)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.11"
+   ]
+  },
+  {
+   "posten": "(5.1a) phi+ = Q/(2 pi eps) [ln(1/r0) - ln(1/d)] = Q/(2 pi eps) ln(d/r0)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.1a"
+   ]
+  },
+  {
+   "posten": "(5.1b) phi- = Q/(2 pi eps) ln(r0/d) = -phi+",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.1b"
+   ]
+  },
+  {
+   "posten": "(5.2) ln(d/r0) - ln(r0/d) = 2 ln(d/r0)  (weil ln(r0/d) = -ln(d/r0))",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.2"
+   ]
+  },
+  {
+   "posten": "(5.2) U = phi+ - phi- = Q/(pi eps) ln(d/r0)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.2"
+   ]
+  },
+  {
+   "posten": "(5.3) C' = pi eps / ln(d/r0)",
+   "richtig": true,
+   "zusatz": "pi*epsilon/log(k + 1)",
+   "gleichungen": [
+    "5.3"
+   ]
+  },
+  {
+   "posten": "(5.5) L' = mu/pi ln(d/r0)",
+   "richtig": true,
+   "zusatz": "mu*log(k + 1)/pi",
+   "gleichungen": [
+    "5.5"
+   ]
+  },
+  {
+   "posten": "(5.3a) Kapazitaetsbelag unabhaengig: Feldintegration gibt C' = pi eps / ln((d-r0)/r0)",
+   "richtig": true,
+   "zusatz": "pi*epsilon/log(k)",
+   "gleichungen": [
+    "5.3a"
+   ]
+  },
+  {
+   "posten": "(5.3a) Kapazitaetsbelag unabhaengig: fuer d >> r0 geht ln((d-r0)/r0) in ln(d/r0) ueber (Grenzwert des Verhaeltnisses = 1)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.3a"
+   ]
+  },
+  {
+   "posten": "(5.3a) Kapazitaetsbelag unabhaengig: exakt pi eps / arcosh(d/(2 r0)), arcosh(x) -> ln(2x) fuer grosse x",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.3a"
+   ]
+  },
+  {
+   "posten": "(5.3a) Kapazitaetsbelag Zahlen d=10 mm, r0=0,5 mm: Naeherung 0,08 % neben exakt, Feldintegration 1,7 %",
+   "richtig": true,
+   "zusatz": "exakt 9.2931 pF/m, ln(d/r0) 9.2853, ln((d-r0)/r0) 9.4470",
+   "gleichungen": [
+    "5.3a"
+   ]
+  },
+  {
+   "posten": "(5.6) Z_w = (1/pi) sqrt(mu/eps) ln(d/r0)",
+   "richtig": true,
+   "zusatz": "sqrt(mu)*log(k + 1)/(pi*sqrt(epsilon))",
+   "gleichungen": [
+    "5.6"
+   ]
+  },
+  {
+   "posten": "(5.7) v = 1/sqrt(L'C') = 1/sqrt(mu eps): Geometrie kuerzt sich",
+   "richtig": true,
+   "zusatz": "1/(sqrt(epsilon)*sqrt(mu))",
+   "gleichungen": [
+    "5.7"
+   ]
+  },
+  {
+   "posten": "(5.8) Zahlenbeispiel Luft d=10 mm, r0=0,5 mm: Z_w ~ 359 Ohm, v = c0",
+   "richtig": true,
+   "zusatz": "C' = 9.285 pF/m, L' = 1.1983 uH/m, Z_w = 359.24 Ohm, v = 299792458.1 m/s",
+   "gleichungen": [
+    "5.8"
+   ]
+  },
+  {
+   "posten": "Stossstelle (6.3)->(6.6): r = (Z2-Z1)/(Z2+Z1)",
+   "richtig": true,
+   "zusatz": "(-Z_1*u_e + Z_2*u_e)/(Z_1 + Z_2)",
+   "gleichungen": [
+    "6.3",
+    "6.6"
+   ]
+  },
+  {
+   "posten": "Stossstelle (6.6): t = 2 Z2/(Z2+Z1) = 1 + r",
+   "richtig": true,
+   "zusatz": "2*Z_2*u_e/(Z_1 + Z_2)",
+   "gleichungen": [
+    "6.6"
+   ]
+  },
+  {
+   "posten": "Stossstelle (6.4)/(6.7a)/(6.7b): Cramer gibt dieselben u_r, u_t",
+   "richtig": true,
+   "zusatz": "D = (Z_1 + Z_2)/(Z_1*Z_2)",
+   "gleichungen": [
+    "6.4",
+    "6.7a",
+    "6.7b"
+   ]
+  },
+  {
+   "posten": "Stossstelle Proben: Z2=Z1 -> r=0,t=1; Z2->oo -> r=1,t=2; Z2=0 -> r=-1,t=0",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": []
+  },
+  {
+   "posten": "Stossstelle (6.8): Leistungsbilanz r^2 + t^2 Z1/Z2 = 1",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.8"
+   ]
+  },
+  {
+   "posten": "Verzweigung (6.10): 50 Ohm auf zwei 50-Ohm-Leitungen: Zp = 25, r = -1/3, t = 2/3, Leistung 1/9 + 2*4/9 = 1",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.10"
+   ]
+  },
+  {
+   "posten": "Sternpunkt (6.11)/(6.12)/(6.13), n=3: aus dem vollen System folgt Z_ein und r = (Zein - Z)/(Zein + Z)",
+   "richtig": true,
+   "zusatz": "(R - Z/3)/(R + Z)",
+   "gleichungen": [
+    "6.11",
+    "6.12",
+    "6.13"
+   ]
+  },
+  {
+   "posten": "Sternpunkt (6.14a)/(6.14b): Zein = Z -> R = (n-2)/n Z",
+   "richtig": true,
+   "zusatz": "Z*(n - 2)/n",
+   "gleichungen": [
+    "6.14a",
+    "6.14b"
+   ]
+  },
+  {
+   "posten": "Sternpunkt (6.15a)/(6.15b): n=3, Z=50 -> R = 50/3 = 16,67 Ohm; n=4 -> R = 25 Ohm",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.15a",
+    "6.15b"
+   ]
+  },
+  {
+   "posten": "Sternpunkt (6.16), n=3 mit R=Z/3: r = 0, u_2 = u_3 = u_e/2, P_2/P_e = 1/4, Summe 1/2",
+   "richtig": true,
+   "zusatz": "u_S = 2*u_e/3",
+   "gleichungen": [
+    "6.16"
+   ]
+  },
+  {
+   "posten": "Sternpunkt: die fruehere Aussage 'Spannung teilt sich 50/(50+2*50/3) = 0,6' war FALSCH, richtig ist 1/2",
+   "richtig": true,
+   "zusatz": "0.600 statt 0,5",
+   "gleichungen": []
+  },
+  {
+   "posten": "Uebergang (6.17): dr = dZ/(2Z+dZ) -> dZ/(2Z) in erster Ordnung",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.17"
+   ]
+  },
+  {
+   "posten": "Uebergang (6.18)/(6.19): Faltungsintegral, Rechteck vT < 2L -> Scheitel (1/2) ln(Z2/Z1) vT/(2L)",
+   "richtig": true,
+   "zusatz": "-log(Z_1)/8 + log(Z_2)/8",
+   "gleichungen": [
+    "6.18",
+    "6.19"
+   ]
+  },
+  {
+   "posten": "Uebergang (6.19): Sprung (T -> oo) -> (1/2) ln(Z2/Z1); fuer Z2/Z1 = 3: 0,549 (exakt 0,5)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.19"
+   ]
+  },
+  {
+   "posten": "Uebergang (6.18)/(6.20): |(1/L) Int exp(-j 4 pi x/lambda) dx| = |sin(2 pi L/lambda)/(2 pi L/lambda)|, null bei L = lambda/2",
+   "richtig": true,
+   "zusatz": "L = lambda/4: 0.6366",
+   "gleichungen": [
+    "6.18",
+    "6.20"
+   ]
+  },
+  {
+   "posten": "Gaussimpuls (7.1): sigma = T/(2 sqrt(2 ln 2)) macht T zur Halbwertsbreite, e(t0 +- T/2) = E0/2",
+   "richtig": true,
+   "zusatz": "2 sqrt(2 ln 2) = 2.35482",
+   "gleichungen": [
+    "7.1"
+   ]
+  },
+  {
+   "posten": "Gaussimpuls (7.1): e(0) = E0 exp(-16 ln 2) = 1,5e-5 E0 (Rest des energielosen Anfangs)",
+   "richtig": true,
+   "zusatz": "1.526e-05",
+   "gleichungen": [
+    "7.1"
+   ]
+  },
+  {
+   "posten": "Sternknoten (7.3a)/(7.3b)/(7.4)/(7.5): u_S' = (Z/n) sum b_k loest die drei Trapezgleichungen mit der Knotenregel",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "7.3a",
+    "7.3b",
+    "7.4",
+    "7.5"
+   ]
+  },
+  {
+   "posten": "Sterndurchlass t = (1-r)/(n-1): bei R = (n-2)Z/n gleich 1/(n-1) (6.16), bei R = 0 gleich 2 Zp/(Zp+Z) mit Zp = Z/(n-1) (6.10)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.16",
+    "6.10"
+   ]
+  },
+  {
+   "posten": "Verzweigung Tabelle: 3/4*1/2*3/2 = 0,5625; 2/3*2 = 1,3333; 1/2*1/3 = 0,1667",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": []
+  },
+  {
+   "posten": "(1.1)->(1.2): div D = rho mit D = eps E und rho = 0 gibt div E = 0",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.1",
+    "1.2"
+   ]
+  },
+  {
+   "posten": "(1.1)->(1.2): rot E = -dB/dt mit B = mu H gibt rot E = -mu dH/dt",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.1",
+    "1.2"
+   ]
+  },
+  {
+   "posten": "(1.1)->(1.2): rot H = j + dD/dt mit j = sigma E, D = eps E; fuer sigma -> 0 bleibt rot H = eps dE/dt",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.1",
+    "1.2"
+   ]
+  },
+  {
+   "posten": "(1.2) Kriterium: |eps dE/dt| / |sigma E| = omega eps/sigma (harmonische Zeitabhaengigkeit)",
+   "richtig": true,
+   "zusatz": "Verschiebungsstrom ueberwiegt fuer omega eps/sigma >> 1",
+   "gleichungen": [
+    "1.2"
+   ]
+  },
+  {
+   "posten": "(1.3c) rot rot E = -mu d/dt (eps dE/dt) = -mu eps d2E/dt2",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.3c"
+   ]
+  },
+  {
+   "posten": "(1.3d) Gleichsetzen von (1.3a) und (1.3c) mit div E = rho/eps gibt grad(rho/eps) - Laplace E = -mu eps E_tt",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "1.3d",
+    "1.3a",
+    "1.3c"
+   ]
+  },
+  {
+   "posten": "(2.1)->(2.2): Maschensatz nach (u(x+dx)-u(x))/dx aufgeloest gibt -R' i - L' di/dt",
+   "richtig": true,
+   "zusatz": "-L'*Derivative(i(x, t), t) - R'*i(x, t)",
+   "gleichungen": [
+    "2.1",
+    "2.2"
+   ]
+  },
+  {
+   "posten": "(2.2)->(2.3): Grenzuebergang dx -> 0 macht den Differenzenquotienten zur Ableitung du/dx",
+   "richtig": true,
+   "zusatz": "Taylor: u(x+dx) = u(x) + dx du/dx + O(dx^2)",
+   "gleichungen": [
+    "2.2",
+    "2.3"
+   ]
+  },
+  {
+   "posten": "(2.4)->(2.5): Knotensatz nach (i(x+dx)-i(x))/dx aufgeloest gibt -G' u - C' du/dt",
+   "richtig": true,
+   "zusatz": "-C'*Derivative(u(x, t), t) - G'*u(x, t)",
+   "gleichungen": [
+    "2.4",
+    "2.5"
+   ]
+  },
+  {
+   "posten": "(2.5)->(2.6): Grenzuebergang dx -> 0 gibt di/dx = -G' u - C' du/dt",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "2.5",
+    "2.6"
+   ]
+  },
+  {
+   "posten": "(3.1) Ableitungsregel L{df/dt} = sF(s) - f(0) an exp(-a t)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.1"
+   ]
+  },
+  {
+   "posten": "(3.1) Ableitungsregel L{df/dt} = sF(s) - f(0) an sin(a t)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.1"
+   ]
+  },
+  {
+   "posten": "(3.1) damit wird aus (2.3)/(2.6): dU/dx = -(R'+sL')I + L' i(x,0) und dI/dx = -(G'+sC')U + C' u(x,0)",
+   "richtig": true,
+   "zusatz": "Anfangswerte i(x,0), u(x,0)",
+   "gleichungen": [
+    "3.1",
+    "2.3",
+    "2.6"
+   ]
+  },
+  {
+   "posten": "(3.2) energieloser Anfang u(x,0) = i(x,0) = 0 streicht die Anfangsglieder aus (3.1)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.2",
+    "3.1"
+   ]
+  },
+  {
+   "posten": "(3.4) gamma = sqrt((R'+sL')(G'+sC')) ist die Wurzel des Faktors in (3.3)",
+   "richtig": true,
+   "zusatz": "sqrt(C'*s + G')*sqrt(L'*s + R')",
+   "gleichungen": [
+    "3.4",
+    "3.3"
+   ]
+  },
+  {
+   "posten": "(3.5) (3.3) mit (3.4) geschrieben: d2U/dx2 - gamma^2 U = 0",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.5",
+    "3.3",
+    "3.4"
+   ]
+  },
+  {
+   "posten": "(3.8) I(x) = K1 sqrt((G'+sC')/(R'+sL')) e^(-gx) - K2 sqrt(...) e^(+gx)",
+   "richtig": true,
+   "zusatz": "(K_1 - K_2*exp(2*x*sqrt(C'*s + G')*sqrt(L'*s + R')))*sqrt(C'*s + G')*exp(-x*sqrt(C'*s + G')*sqrt(L'*s + R'))/sqrt(L'*s + R')",
+   "gleichungen": [
+    "3.8"
+   ]
+  },
+  {
+   "posten": "(3.9) Z_w = sqrt((R'+sL')/(G'+sC')) ist der Kehrwert der Wurzel in (3.8)",
+   "richtig": true,
+   "zusatz": "sqrt(L'*s + R')/sqrt(C'*s + G')",
+   "gleichungen": [
+    "3.9",
+    "3.8"
+   ]
+  },
+  {
+   "posten": "(3.11)/(3.12a) R' = G' = 0: gamma = s sqrt(L'C') und Z_w = sqrt(L'/C') (reell, von s unabhaengig)",
+   "richtig": true,
+   "zusatz": "sqrt(C')*sqrt(L')*s, sqrt(L')/sqrt(C')",
+   "gleichungen": [
+    "3.11",
+    "3.12a"
+   ]
+  },
+  {
+   "posten": "(3.12b) I = K1/Z_w e^(-s sqrt(L'C') x) - K2/Z_w e^(+s sqrt(L'C') x)",
+   "richtig": true,
+   "zusatz": "sqrt(C')*(K_1 - K_2*exp(2*sqrt(C')*sqrt(L')*s*x))*exp(-sqrt(C')*sqrt(L')*s*x)/sqrt(L')",
+   "gleichungen": [
+    "3.12b"
+   ]
+  },
+  {
+   "posten": "(3.13)/(3.14) U(0) = E gibt K1 + K2 = E",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.13",
+    "3.14"
+   ]
+  },
+  {
+   "posten": "(3.15a)/(3.15b) U(l) = Z_w I(l): Z_w kuerzt sich, es bleibt K2 e^(+g l) = -K2 e^(+g l)",
+   "richtig": true,
+   "zusatz": "2 K2 e^(g l) = 0",
+   "gleichungen": [
+    "3.15a",
+    "3.15b"
+   ]
+  },
+  {
+   "posten": "(3.16) daraus K2 = 0 und K1 = E",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.16"
+   ]
+  },
+  {
+   "posten": "(3.19) u(x,t) = e(t - sqrt(L'C') x): Rucktransformation des Rechteckimpulses, unverzerrt um tau verschoben",
+   "richtig": true,
+   "zusatz": "-E_0*(-Heaviside(t - tau) + Heaviside(-T_p + t - tau))",
+   "gleichungen": [
+    "3.19"
+   ]
+  },
+  {
+   "posten": "(3.19) i(x,t) = e(t - sqrt(L'C') x)/Z_w: derselbe Verlauf, geteilt durch Z_w",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.19"
+   ]
+  },
+  {
+   "posten": "(3.19) die Laufzeit im Exponenten ist tau = sqrt(L'C') x, also (3.20) v = x/tau = 1/sqrt(L'C')",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.19",
+    "3.20"
+   ]
+  },
+  {
+   "posten": "(3.22) ist (3.24) mit R_i = 0 (r_q = -1): beide Reihen stimmen Glied fuer Glied ueberein",
+   "richtig": true,
+   "zusatz": "Abgleich bis n = 4",
+   "gleichungen": [
+    "3.22",
+    "3.24"
+   ]
+  },
+  {
+   "posten": "(4.1) Definition der doppelten Transformation: an e^(-az) e^(-bt) gibt sie 1/((p+a)(s+b))",
+   "richtig": true,
+   "zusatz": "1/(a*b + a*s + b*p + p*s)",
+   "gleichungen": [
+    "4.1"
+   ]
+  },
+  {
+   "posten": "(4.2) L_t L_z{d2H/dt2} = s^2 Hbar - s Hdach(p,0) - Hdach_t(p,0)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.2"
+   ]
+  },
+  {
+   "posten": "(4.3) L_t L_z{d2H/dz2} = p^2 Hbar - p Hdach(0,s) - Hdach_z(0,s)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.3"
+   ]
+  },
+  {
+   "posten": "(4.4) (p^2 Hbar - p A(s)) - (s^2/c^2) Hbar = 0, also Hbar (p^2 - s^2/c^2) = p A(s)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.4"
+   ]
+  },
+  {
+   "posten": "(4.8) Ortstransformation zuerst: p^2 Hdach = (1/c^2) d2Hdach/dt2, dann Zeit: p^2 Hbar = (1/c^2)(s^2 Hbar - s fdach)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "4.8"
+   ]
+  },
+  {
+   "posten": "(5.4) Phi_1 = Int mu H l dr von r0 bis d = (mu i l)/(2 pi) ln(d/r0)",
+   "richtig": true,
+   "zusatz": "i*l*mu*log(d)/(2*pi) - i*l*mu*log(r_0)/(2*pi)",
+   "gleichungen": [
+    "5.4"
+   ]
+  },
+  {
+   "posten": "(6.1a) der Ansatz u = u_e(t-x/v) + u_r(t+x/v), i = (u_e - u_r)/Z erfuellt (2.3) und (2.6) (verlustlos)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.1a",
+    "2.3",
+    "2.6"
+   ]
+  },
+  {
+   "posten": "(6.1b) die rein hinlaufende Welle u = u_t(t-x/v), i = u_t/Z erfuellt dieselben Gleichungen",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.1b"
+   ]
+  },
+  {
+   "posten": "(6.2)->(6.3) Stetigkeit bei x = 0 liefert genau u_e + u_r = u_t und (u_e - u_r)/Z1 = u_t/Z2",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.2",
+    "6.3"
+   ]
+  },
+  {
+   "posten": "(6.5) Zwischenschritt: Z2 u_e - Z2 u_r = Z1 u_e + Z1 u_r, also u_r (Z1+Z2) = u_e (Z2-Z1)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "6.5"
+   ]
+  },
+  {
+   "posten": "(6.9) Verzweigung: Summe der Zweigstroeme u_t/Z_k ist u_t/Z_p mit 1/Z_p = Summe 1/Z_k",
+   "richtig": true,
+   "zusatz": "n-1 = 3 Zweige",
+   "gleichungen": [
+    "6.9"
+   ]
+  },
+  {
+   "posten": "(7.2) Impulslaenge: aus u(x,t) = e(t - x/v) folgt im Ort die Halbwertsbreite l_p = v T",
+   "richtig": true,
+   "zusatz": "Stellen [-T*v*sqrt(log(2**(1/4)))/sqrt(log(2)), T*v*sqrt(log(2**(1/4)))/sqrt(log(2))]",
+   "gleichungen": [
+    "7.2"
+   ]
+  },
+  {
+   "posten": "(7.5) R -> 0: aus (7.4) wird u' = u + (2 Z_w/n) Summe i_k (ein Knoten aus n halben Zellen)",
+   "richtig": true,
+   "zusatz": "2*Z*i_1/3 + 2*Z*i_2/3 + 2*Z*i_3/3 + u_g",
+   "gleichungen": [
+    "7.5",
+    "7.4"
+   ]
+  },
+  {
+   "posten": "Belaege exakt: der Spiegelabstand ist a = sqrt((d/2)^2 - r0^2) = r0 sinh(w) mit d = 2 r0 cosh(w)",
+   "richtig": true,
+   "zusatz": "r_0*sinh(w)",
+   "gleichungen": []
+  },
+  {
+   "posten": "Belaege exakt: mit a^2 = (d/2)^2 - r0^2 ist die Drahtoberflaeche eine Aequipotentialflaeche (r+/r- haengt nicht von theta ab)",
+   "richtig": true,
+   "zusatz": "(r+/r-)^2 = (exp(w) + 1)**2/(1 + exp(-w))**2",
+   "gleichungen": []
+  },
+  {
+   "posten": "Belaege exakt: das Verhaeltnis ist (d/2 + a)/r0 = cosh w + sinh w = e^w, und w = arcosh(d/(2 r0))",
+   "richtig": true,
+   "zusatz": "exp(w)",
+   "gleichungen": []
+  },
+  {
+   "posten": "Belaege exakt: C' = q/U = pi eps / w = pi eps / arcosh(d/(2 r0))",
+   "richtig": true,
+   "zusatz": "pi*epsilon/w",
+   "gleichungen": []
+  },
+  {
+   "posten": "Belaege: die Naeherung (5.3) entsteht fuer d >> r0 — arcosh(d/(2r0)) und ln(d/r0) fallen zusammen",
+   "richtig": true,
+   "zusatz": "arcosh(y/2) - ln(y) -> 0 fuer y = d/r0 -> oo",
+   "gleichungen": [
+    "5.3"
+   ]
+  },
+  {
+   "posten": "(5.5) unabhaengig: Fluss beider Leiter von r0 bis d-r0 gibt L' = (mu/pi) ln((d-r0)/r0)",
+   "richtig": true,
+   "zusatz": "mu*log(k)/pi mit k = (d-r0)/r0",
+   "gleichungen": [
+    "5.5"
+   ]
+  },
+  {
+   "posten": "(5.5) unabhaengig: fuer d >> r0 geht ln((d-r0)/r0) in ln(d/r0) ueber — dieselbe Naeherung wie bei C'",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.5"
+   ]
+  },
+  {
+   "posten": "(5.5)/(5.3) Gegenprobe: L' C' = mu eps — die Geometriefunktion ln(d/r0) kuerzt sich heraus",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.5",
+    "5.3"
+   ]
+  },
+  {
+   "posten": "(5.5) exakt: L' = (mu/pi) arcosh(d/(2r0)) folgt aus L'C' = mu eps mit dem exakten C'",
+   "richtig": true,
+   "zusatz": "mu*w/pi",
+   "gleichungen": [
+    "5.5"
+   ]
+  },
+  {
+   "posten": "(5.5) Gegenprobe ueber Z_w und v: L' = Z_w/v und C' = 1/(Z_w v) geben dieselben Belaege",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "5.5"
+   ]
+  },
+  {
+   "posten": "Belaege Zahlen d=10 mm, r0=0,5 mm: Naeherung und exakte Form liegen 0,08 % auseinander, L'C' bleibt mu0 eps0",
+   "richtig": true,
+   "zusatz": "C' 9.2853 gegen 9.2931 pF/m, L' 1.1983 gegen 1.1973 uH/m",
+   "gleichungen": []
+  }
+ ],
+ "gleichungen_geprueft": [
+  "1.1",
+  "1.2",
+  "1.3a",
+  "1.3b",
+  "1.3c",
+  "1.3d",
+  "1.4",
+  "1.5",
+  "2.1",
+  "2.2",
+  "2.3",
+  "2.4",
+  "2.5",
+  "2.6",
+  "2.7",
+  "3.1",
+  "3.10",
+  "3.11",
+  "3.12a",
+  "3.12b",
+  "3.13",
+  "3.14",
+  "3.15a",
+  "3.15b",
+  "3.16",
+  "3.17",
+  "3.18",
+  "3.19",
+  "3.2",
+  "3.20",
+  "3.21",
+  "3.22",
+  "3.23",
+  "3.24",
+  "3.3",
+  "3.4",
+  "3.5",
+  "3.6",
+  "3.7",
+  "3.8",
+  "3.9",
+  "4.1",
+  "4.10",
+  "4.11",
+  "4.2",
+  "4.3",
+  "4.4",
+  "4.5",
+  "4.6",
+  "4.7",
+  "4.8",
+  "4.9",
+  "5.1a",
+  "5.1b",
+  "5.2",
+  "5.3",
+  "5.3a",
+  "5.4",
+  "5.5",
+  "5.6",
+  "5.7",
+  "5.8",
+  "6.10",
+  "6.11",
+  "6.12",
+  "6.13",
+  "6.14a",
+  "6.14b",
+  "6.15a",
+  "6.15b",
+  "6.16",
+  "6.17",
+  "6.18",
+  "6.19",
+  "6.1a",
+  "6.1b",
+  "6.2",
+  "6.20",
+  "6.3",
+  "6.4",
+  "6.5",
+  "6.6",
+  "6.7a",
+  "6.7b",
+  "6.8",
+  "6.9",
+  "7.1",
+  "7.2",
+  "7.3a",
+  "7.3b",
+  "7.4",
+  "7.5"
+ ],
+ "alle_richtig": true
+}

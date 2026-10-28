@@ -1,0 +1,478 @@
+{
+ "gleichungen_manuskript": [
+  "1.1",
+  "1.2",
+  "1.3a",
+  "1.3b",
+  "1.3c",
+  "1.3d",
+  "1.4",
+  "1.5",
+  "2.1",
+  "2.2",
+  "2.3",
+  "2.4",
+  "2.5",
+  "2.6",
+  "2.7",
+  "3.1",
+  "3.2",
+  "3.3",
+  "3.4",
+  "3.5",
+  "3.6",
+  "3.7",
+  "3.8",
+  "3.9",
+  "3.10",
+  "3.11",
+  "3.12a",
+  "3.12b",
+  "3.13",
+  "3.14",
+  "3.15a",
+  "3.15b",
+  "3.16",
+  "3.17",
+  "3.18",
+  "3.19",
+  "3.20",
+  "3.21",
+  "3.22",
+  "3.23",
+  "3.24",
+  "4.1",
+  "4.2",
+  "4.3",
+  "4.4",
+  "4.5",
+  "4.6",
+  "4.7",
+  "4.8",
+  "4.9",
+  "4.10",
+  "4.11",
+  "5.1a",
+  "5.1b",
+  "5.2",
+  "5.3",
+  "5.3a",
+  "5.4",
+  "5.5",
+  "5.6",
+  "5.7",
+  "5.8",
+  "6.1a",
+  "6.1b",
+  "6.2",
+  "6.3",
+  "6.4",
+  "6.5",
+  "6.6",
+  "6.7a",
+  "6.7b",
+  "6.8",
+  "6.9",
+  "6.10",
+  "6.11",
+  "6.12",
+  "6.13",
+  "6.14a",
+  "6.14b",
+  "6.15a",
+  "6.15b",
+  "6.16",
+  "6.17",
+  "6.18",
+  "6.19",
+  "6.20",
+  "7.1",
+  "7.2",
+  "7.3a",
+  "7.3b",
+  "7.4",
+  "7.5"
+ ],
+ "geprueft": {
+  "1.1": [
+   "(1.1)->(1.2): div D = rho mit D = eps E und rho = 0 gibt div E = 0",
+   "(1.1)->(1.2): rot E = -dB/dt mit B = mu H gibt rot E = -mu dH/dt",
+   "(1.1)->(1.2): rot H = j + dD/dt mit j = sigma E, D = eps E; fuer sigma -> 0 bleibt rot H = eps dE/dt"
+  ],
+  "1.2": [
+   "(1.1)->(1.2): div D = rho mit D = eps E und rho = 0 gibt div E = 0",
+   "(1.1)->(1.2): rot E = -dB/dt mit B = mu H gibt rot E = -mu dH/dt",
+   "(1.1)->(1.2): rot H = j + dD/dt mit j = sigma E, D = eps E; fuer sigma -> 0 bleibt rot H = eps dE/dt",
+   "(1.2) Kriterium: |eps dE/dt| / |sigma E| = omega eps/sigma (harmonische Zeitabhaengigkeit)"
+  ],
+  "1.3a": [
+   "(1.3a) Vektoridentitaet rot rot E = grad div E - Laplace E",
+   "(1.3d) Gleichsetzen von (1.3a) und (1.3c) mit div E = rho/eps gibt grad(rho/eps) - Laplace E = -mu eps E_tt"
+  ],
+  "1.3b": [
+   "(1.3b) rot(-mu H_t) = -mu d/dt rot H (Vertauschbarkeit)"
+  ],
+  "1.3c": [
+   "(1.3c) rot rot E = -mu d/dt (eps dE/dt) = -mu eps d2E/dt2",
+   "(1.3d) Gleichsetzen von (1.3a) und (1.3c) mit div E = rho/eps gibt grad(rho/eps) - Laplace E = -mu eps E_tt"
+  ],
+  "1.3d": [
+   "(1.3d) Gleichsetzen von (1.3a) und (1.3c) mit div E = rho/eps gibt grad(rho/eps) - Laplace E = -mu eps E_tt"
+  ],
+  "1.4": [
+   "(1.4) ebene Welle f(z - ct) e_x: div E = 0 und rot rot E + mu eps E_tt = 0"
+  ],
+  "1.5": [
+   "(1.5) 1D: d2f/dz2 - (1/c^2) d2f/dt2 = 0 fuer f(z - ct)"
+  ],
+  "2.1": [
+   "(2.1)->(2.2): Maschensatz nach (u(x+dx)-u(x))/dx aufgeloest gibt -R' i - L' di/dt"
+  ],
+  "2.2": [
+   "(2.1)->(2.2): Maschensatz nach (u(x+dx)-u(x))/dx aufgeloest gibt -R' i - L' di/dt",
+   "(2.2)->(2.3): Grenzuebergang dx -> 0 macht den Differenzenquotienten zur Ableitung du/dx"
+  ],
+  "2.3": [
+   "(2.2)->(2.3): Grenzuebergang dx -> 0 macht den Differenzenquotienten zur Ableitung du/dx",
+   "(3.1) damit wird aus (2.3)/(2.6): dU/dx = -(R'+sL')I + L' i(x,0) und dI/dx = -(G'+sC')U + C' u(x,0)",
+   "(6.1a) der Ansatz u = u_e(t-x/v) + u_r(t+x/v), i = (u_e - u_r)/Z erfuellt (2.3) und (2.6) (verlustlos)"
+  ],
+  "2.4": [
+   "(2.4)->(2.5): Knotensatz nach (i(x+dx)-i(x))/dx aufgeloest gibt -G' u - C' du/dt"
+  ],
+  "2.5": [
+   "(2.4)->(2.5): Knotensatz nach (i(x+dx)-i(x))/dx aufgeloest gibt -G' u - C' du/dt",
+   "(2.5)->(2.6): Grenzuebergang dx -> 0 gibt di/dx = -G' u - C' du/dt"
+  ],
+  "2.6": [
+   "(2.5)->(2.6): Grenzuebergang dx -> 0 gibt di/dx = -G' u - C' du/dt",
+   "(3.1) damit wird aus (2.3)/(2.6): dU/dx = -(R'+sL')I + L' i(x,0) und dI/dx = -(G'+sC')U + C' u(x,0)",
+   "(6.1a) der Ansatz u = u_e(t-x/v) + u_r(t+x/v), i = (u_e - u_r)/Z erfuellt (2.3) und (2.6) (verlustlos)"
+  ],
+  "2.7": [
+   "(2.7) Telegraphengleichung im Zeitbereich: u_xx = L'C' u_tt + (R'C'+L'G') u_t + R'G' u"
+  ],
+  "3.1": [
+   "(3.1) Ableitungsregel L{df/dt} = sF(s) - f(0) an exp(-a t)",
+   "(3.1) Ableitungsregel L{df/dt} = sF(s) - f(0) an sin(a t)",
+   "(3.1) damit wird aus (2.3)/(2.6): dU/dx = -(R'+sL')I + L' i(x,0) und dI/dx = -(G'+sC')U + C' u(x,0)",
+   "(3.2) energieloser Anfang u(x,0) = i(x,0) = 0 streicht die Anfangsglieder aus (3.1)"
+  ],
+  "3.10": [
+   "(3.10) I = K1/Zw e^(-gx) - K2/Zw e^(gx)"
+  ],
+  "3.11": [
+   "(3.11)/(3.12a) R' = G' = 0: gamma = s sqrt(L'C') und Z_w = sqrt(L'/C') (reell, von s unabhaengig)"
+  ],
+  "3.12a": [
+   "(3.12a) gamma = s sqrt(L'C'), Zw = sqrt(L'/C')",
+   "(3.11)/(3.12a) R' = G' = 0: gamma = s sqrt(L'C') und Z_w = sqrt(L'/C') (reell, von s unabhaengig)"
+  ],
+  "3.12b": [
+   "(3.12b) I = K1/Z_w e^(-s sqrt(L'C') x) - K2/Z_w e^(+s sqrt(L'C') x)"
+  ],
+  "3.13": [
+   "(3.13)/(3.14) U(0) = E gibt K1 + K2 = E"
+  ],
+  "3.14": [
+   "(3.13)/(3.14) U(0) = E gibt K1 + K2 = E"
+  ],
+  "3.15a": [
+   "(3.15a)/(3.15b) U(l) = Z_w I(l): Z_w kuerzt sich, es bleibt K2 e^(+g l) = -K2 e^(+g l)"
+  ],
+  "3.15b": [
+   "(3.15a)/(3.15b) U(l) = Z_w I(l): Z_w kuerzt sich, es bleibt K2 e^(+g l) = -K2 e^(+g l)"
+  ],
+  "3.16": [
+   "(3.16) K2 = 0, K1 = E",
+   "(3.16) daraus K2 = 0 und K1 = E"
+  ],
+  "3.17": [
+   "(3.17) U = E e^(-s sqrt(L'C') x)"
+  ],
+  "3.18": [
+   "(3.18)/(3.19) Verschiebungssatz: Rechteckimpuls kommt um tau verschoben, unverzerrt an"
+  ],
+  "3.19": [
+   "(3.19) Eingangswiderstand U(0)/I(0) = Zw",
+   "(3.18)/(3.19) Verschiebungssatz: Rechteckimpuls kommt um tau verschoben, unverzerrt an",
+   "(3.19) u(x,t) = e(t - sqrt(L'C') x): Rucktransformation des Rechteckimpulses, unverzerrt um tau verschoben",
+   "(3.19) i(x,t) = e(t - sqrt(L'C') x)/Z_w: derselbe Verlauf, geteilt durch Z_w",
+   "(3.19) die Laufzeit im Exponenten ist tau = sqrt(L'C') x, also (3.20) v = x/tau = 1/sqrt(L'C')"
+  ],
+  "3.2": [
+   "(3.2) dI/dx = -(G'+sC') U erfuellt",
+   "(3.2) energieloser Anfang u(x,0) = i(x,0) = 0 streicht die Anfangsglieder aus (3.1)"
+  ],
+  "3.20": [
+   "(3.20) v = x/tau = 1/sqrt(L'C')",
+   "(3.19) die Laufzeit im Exponenten ist tau = sqrt(L'C') x, also (3.20) v = x/tau = 1/sqrt(L'C')"
+  ],
+  "3.21": [
+   "(3.21) Reflexionsfaktor am Ende r = (Za - Zw)/(Za + Zw)",
+   "(3.21) Leerlauf r -> +1, Kurzschluss r = -1, Anpassung r = 0"
+  ],
+  "3.22": [
+   "(3.22) ist (3.24) mit R_i = 0 (r_q = -1): beide Reihen stimmen Glied fuer Glied ueberein"
+  ],
+  "3.23": [
+   "(3.23) Quelle mit R_i: K1 = E Zw/(Ri+Zw) / (1 - r_q r_a e^(-2 gamma l))",
+   "(3.23) Quelle mit R_i: K2 e^(gamma l) = r_a K1 e^(-gamma l)  (Reflexion am Ende)"
+  ],
+  "3.24": [
+   "(3.24) R_i = 0 gibt r_q = -1 und K1 -> E/(1 + r_a e^(-2 gamma l)); R_i = Zw gibt r_q = 0 und K1 = E/2",
+   "(3.22) ist (3.24) mit R_i = 0 (r_q = -1): beide Reihen stimmen Glied fuer Glied ueberein"
+  ],
+  "3.3": [
+   "(3.3) d2U/dx2 = (R'+sL')(G'+sC') U [Folie 4.34]",
+   "(3.4) gamma = sqrt((R'+sL')(G'+sC')) ist die Wurzel des Faktors in (3.3)",
+   "(3.5) (3.3) mit (3.4) geschrieben: d2U/dx2 - gamma^2 U = 0"
+  ],
+  "3.4": [
+   "(3.4) gamma = sqrt((R'+sL')(G'+sC')) ist die Wurzel des Faktors in (3.3)",
+   "(3.5) (3.3) mit (3.4) geschrieben: d2U/dx2 - gamma^2 U = 0"
+  ],
+  "3.5": [
+   "(3.5)/(3.7) erfuellt von der allgemeinen Loesung",
+   "(3.5) (3.3) mit (3.4) geschrieben: d2U/dx2 - gamma^2 U = 0"
+  ],
+  "3.6": [
+   "(3.6) Ansatz e^(lambda x): lambda^2 - gamma^2 = 0",
+   "(3.6) lambda = +-gamma"
+  ],
+  "3.7": [
+   "(3.5)/(3.7) erfuellt von der allgemeinen Loesung"
+  ],
+  "3.8": [
+   "(3.8) I(x) = K1 sqrt((G'+sC')/(R'+sL')) e^(-gx) - K2 sqrt(...) e^(+gx)",
+   "(3.9) Z_w = sqrt((R'+sL')/(G'+sC')) ist der Kehrwert der Wurzel in (3.8)"
+  ],
+  "3.9": [
+   "(3.9) Z_w = sqrt((R'+sL')/(G'+sC')) ist der Kehrwert der Wurzel in (3.8)"
+  ],
+  "4.1": [
+   "(4.1) Definition der doppelten Transformation: an e^(-az) e^(-bt) gibt sie 1/((p+a)(s+b))"
+  ],
+  "4.10": [
+   "(4.10) L^-1{s/(s^2-a^2)} = cosh(a t)"
+  ],
+  "4.11": [
+   "(4.11) Weg B (Puls): 1/2 f(z-ct) + 1/2 f(z+ct) erfuellt Wellengleichung, H(z,0) = f(z), H_t(z,0) = 0",
+   "(4.11) Gausspuls e^(-z^2): beide Haelften laufen mit c auseinander (Wellengleichung erfuellt)"
+  ],
+  "4.2": [
+   "(4.2) L_t L_z{d2H/dt2} = s^2 Hbar - s Hdach(p,0) - Hdach_t(p,0)"
+  ],
+  "4.3": [
+   "(4.3) L_t L_z{d2H/dz2} = p^2 Hbar - p Hdach(0,s) - Hdach_z(0,s)"
+  ],
+  "4.4": [
+   "(4.4) (p^2 Hbar - p A(s)) - (s^2/c^2) Hbar = 0, also Hbar (p^2 - s^2/c^2) = p A(s)"
+  ],
+  "4.5": [
+   "(4.5) Weg B (Rand): Hbar = A(s) p/(p^2 - (s/c)^2)"
+  ],
+  "4.6": [
+   "(4.6) L^-1{p/(p^2-a^2)} = cosh(a z)"
+  ],
+  "4.7": [
+   "(4.7) Weg B (Rand): 1/2 a(t-z/c) + 1/2 a(t+z/c) erfuellt die Wellengleichung",
+   "(4.7) Weg B (Rand): Randwert H(0,t) = a(t) und Steigung H_z(0,t) = 0 (die Annahme)",
+   "(4.7) Weg B (Rand): mit H_z(0,s) = -(s/c) A(s) bleibt nur A/(p + s/c), also a(t - z/c) (nur hinlaufend)"
+  ],
+  "4.8": [
+   "(4.8) Ortstransformation zuerst: p^2 Hdach = (1/c^2) d2Hdach/dt2, dann Zeit: p^2 Hbar = (1/c^2)(s^2 Hbar - s fdach)"
+  ],
+  "4.9": [
+   "(4.9) Weg B (Puls): Hbar = F(p) s/(s^2 - (c p)^2)"
+  ],
+  "5.1a": [
+   "(5.1a) phi+ = Q/(2 pi eps) [ln(1/r0) - ln(1/d)] = Q/(2 pi eps) ln(d/r0)"
+  ],
+  "5.1b": [
+   "(5.1b) phi- = Q/(2 pi eps) ln(r0/d) = -phi+"
+  ],
+  "5.2": [
+   "(5.2) ln(d/r0) - ln(r0/d) = 2 ln(d/r0)  (weil ln(r0/d) = -ln(d/r0))",
+   "(5.2) U = phi+ - phi- = Q/(pi eps) ln(d/r0)"
+  ],
+  "5.3": [
+   "(5.3) C' = pi eps / ln(d/r0)",
+   "Belaege: die Naeherung (5.3) entsteht fuer d >> r0 — arcosh(d/(2r0)) und ln(d/r0) fallen zusammen",
+   "(5.5)/(5.3) Gegenprobe: L' C' = mu eps — die Geometriefunktion ln(d/r0) kuerzt sich heraus"
+  ],
+  "5.3a": [
+   "(5.3a) Kapazitaetsbelag unabhaengig: Feldintegration gibt C' = pi eps / ln((d-r0)/r0)",
+   "(5.3a) Kapazitaetsbelag unabhaengig: fuer d >> r0 geht ln((d-r0)/r0) in ln(d/r0) ueber (Grenzwert des Verhaeltnisses = 1)",
+   "(5.3a) Kapazitaetsbelag unabhaengig: exakt pi eps / arcosh(d/(2 r0)), arcosh(x) -> ln(2x) fuer grosse x",
+   "(5.3a) Kapazitaetsbelag Zahlen d=10 mm, r0=0,5 mm: Naeherung 0,08 % neben exakt, Feldintegration 1,7 %"
+  ],
+  "5.4": [
+   "(5.4) Phi_1 = Int mu H l dr von r0 bis d = (mu i l)/(2 pi) ln(d/r0)"
+  ],
+  "5.5": [
+   "(5.5) L' = mu/pi ln(d/r0)",
+   "(5.5) unabhaengig: Fluss beider Leiter von r0 bis d-r0 gibt L' = (mu/pi) ln((d-r0)/r0)",
+   "(5.5) unabhaengig: fuer d >> r0 geht ln((d-r0)/r0) in ln(d/r0) ueber — dieselbe Naeherung wie bei C'",
+   "(5.5)/(5.3) Gegenprobe: L' C' = mu eps — die Geometriefunktion ln(d/r0) kuerzt sich heraus",
+   "(5.5) exakt: L' = (mu/pi) arcosh(d/(2r0)) folgt aus L'C' = mu eps mit dem exakten C'",
+   "(5.5) Gegenprobe ueber Z_w und v: L' = Z_w/v und C' = 1/(Z_w v) geben dieselben Belaege"
+  ],
+  "5.6": [
+   "(5.6) Z_w = (1/pi) sqrt(mu/eps) ln(d/r0)"
+  ],
+  "5.7": [
+   "(5.7) v = 1/sqrt(L'C') = 1/sqrt(mu eps): Geometrie kuerzt sich"
+  ],
+  "5.8": [
+   "(5.8) Zahlenbeispiel Luft d=10 mm, r0=0,5 mm: Z_w ~ 359 Ohm, v = c0"
+  ],
+  "6.10": [
+   "Verzweigung (6.10): 50 Ohm auf zwei 50-Ohm-Leitungen: Zp = 25, r = -1/3, t = 2/3, Leistung 1/9 + 2*4/9 = 1",
+   "Sterndurchlass t = (1-r)/(n-1): bei R = (n-2)Z/n gleich 1/(n-1) (6.16), bei R = 0 gleich 2 Zp/(Zp+Z) mit Zp = Z/(n-1) (6.10)"
+  ],
+  "6.11": [
+   "Sternpunkt (6.11)/(6.12)/(6.13), n=3: aus dem vollen System folgt Z_ein und r = (Zein - Z)/(Zein + Z)"
+  ],
+  "6.12": [
+   "Sternpunkt (6.11)/(6.12)/(6.13), n=3: aus dem vollen System folgt Z_ein und r = (Zein - Z)/(Zein + Z)"
+  ],
+  "6.13": [
+   "Sternpunkt (6.11)/(6.12)/(6.13), n=3: aus dem vollen System folgt Z_ein und r = (Zein - Z)/(Zein + Z)"
+  ],
+  "6.14a": [
+   "Sternpunkt (6.14a)/(6.14b): Zein = Z -> R = (n-2)/n Z"
+  ],
+  "6.14b": [
+   "Sternpunkt (6.14a)/(6.14b): Zein = Z -> R = (n-2)/n Z"
+  ],
+  "6.15a": [
+   "Sternpunkt (6.15a)/(6.15b): n=3, Z=50 -> R = 50/3 = 16,67 Ohm; n=4 -> R = 25 Ohm"
+  ],
+  "6.15b": [
+   "Sternpunkt (6.15a)/(6.15b): n=3, Z=50 -> R = 50/3 = 16,67 Ohm; n=4 -> R = 25 Ohm"
+  ],
+  "6.16": [
+   "Sternpunkt (6.16), n=3 mit R=Z/3: r = 0, u_2 = u_3 = u_e/2, P_2/P_e = 1/4, Summe 1/2",
+   "Sterndurchlass t = (1-r)/(n-1): bei R = (n-2)Z/n gleich 1/(n-1) (6.16), bei R = 0 gleich 2 Zp/(Zp+Z) mit Zp = Z/(n-1) (6.10)"
+  ],
+  "6.17": [
+   "Uebergang (6.17): dr = dZ/(2Z+dZ) -> dZ/(2Z) in erster Ordnung"
+  ],
+  "6.18": [
+   "Uebergang (6.18)/(6.19): Faltungsintegral, Rechteck vT < 2L -> Scheitel (1/2) ln(Z2/Z1) vT/(2L)",
+   "Uebergang (6.18)/(6.20): |(1/L) Int exp(-j 4 pi x/lambda) dx| = |sin(2 pi L/lambda)/(2 pi L/lambda)|, null bei L = lambda/2"
+  ],
+  "6.19": [
+   "Uebergang (6.18)/(6.19): Faltungsintegral, Rechteck vT < 2L -> Scheitel (1/2) ln(Z2/Z1) vT/(2L)",
+   "Uebergang (6.19): Sprung (T -> oo) -> (1/2) ln(Z2/Z1); fuer Z2/Z1 = 3: 0,549 (exakt 0,5)"
+  ],
+  "6.1a": [
+   "(6.1a) der Ansatz u = u_e(t-x/v) + u_r(t+x/v), i = (u_e - u_r)/Z erfuellt (2.3) und (2.6) (verlustlos)"
+  ],
+  "6.1b": [
+   "(6.1b) die rein hinlaufende Welle u = u_t(t-x/v), i = u_t/Z erfuellt dieselben Gleichungen"
+  ],
+  "6.2": [
+   "(6.2)->(6.3) Stetigkeit bei x = 0 liefert genau u_e + u_r = u_t und (u_e - u_r)/Z1 = u_t/Z2"
+  ],
+  "6.20": [
+   "Uebergang (6.18)/(6.20): |(1/L) Int exp(-j 4 pi x/lambda) dx| = |sin(2 pi L/lambda)/(2 pi L/lambda)|, null bei L = lambda/2"
+  ],
+  "6.3": [
+   "Stossstelle (6.3)->(6.6): r = (Z2-Z1)/(Z2+Z1)",
+   "(6.2)->(6.3) Stetigkeit bei x = 0 liefert genau u_e + u_r = u_t und (u_e - u_r)/Z1 = u_t/Z2"
+  ],
+  "6.4": [
+   "Stossstelle (6.4)/(6.7a)/(6.7b): Cramer gibt dieselben u_r, u_t"
+  ],
+  "6.5": [
+   "(6.5) Zwischenschritt: Z2 u_e - Z2 u_r = Z1 u_e + Z1 u_r, also u_r (Z1+Z2) = u_e (Z2-Z1)"
+  ],
+  "6.6": [
+   "Stossstelle (6.3)->(6.6): r = (Z2-Z1)/(Z2+Z1)",
+   "Stossstelle (6.6): t = 2 Z2/(Z2+Z1) = 1 + r"
+  ],
+  "6.7a": [
+   "Stossstelle (6.4)/(6.7a)/(6.7b): Cramer gibt dieselben u_r, u_t"
+  ],
+  "6.7b": [
+   "Stossstelle (6.4)/(6.7a)/(6.7b): Cramer gibt dieselben u_r, u_t"
+  ],
+  "6.8": [
+   "Stossstelle (6.8): Leistungsbilanz r^2 + t^2 Z1/Z2 = 1"
+  ],
+  "6.9": [
+   "(6.9) Verzweigung: Summe der Zweigstroeme u_t/Z_k ist u_t/Z_p mit 1/Z_p = Summe 1/Z_k"
+  ],
+  "7.1": [
+   "Gaussimpuls (7.1): sigma = T/(2 sqrt(2 ln 2)) macht T zur Halbwertsbreite, e(t0 +- T/2) = E0/2",
+   "Gaussimpuls (7.1): e(0) = E0 exp(-16 ln 2) = 1,5e-5 E0 (Rest des energielosen Anfangs)"
+  ],
+  "7.2": [
+   "(7.2) Impulslaenge: aus u(x,t) = e(t - x/v) folgt im Ort die Halbwertsbreite l_p = v T"
+  ],
+  "7.3a": [
+   "Sternknoten (7.3a)/(7.3b)/(7.4)/(7.5): u_S' = (Z/n) sum b_k loest die drei Trapezgleichungen mit der Knotenregel"
+  ],
+  "7.3b": [
+   "Sternknoten (7.3a)/(7.3b)/(7.4)/(7.5): u_S' = (Z/n) sum b_k loest die drei Trapezgleichungen mit der Knotenregel"
+  ],
+  "7.4": [
+   "Sternknoten (7.3a)/(7.3b)/(7.4)/(7.5): u_S' = (Z/n) sum b_k loest die drei Trapezgleichungen mit der Knotenregel",
+   "(7.5) R -> 0: aus (7.4) wird u' = u + (2 Z_w/n) Summe i_k (ein Knoten aus n halben Zellen)"
+  ],
+  "7.5": [
+   "Sternknoten (7.3a)/(7.3b)/(7.4)/(7.5): u_S' = (Z/n) sum b_k loest die drei Trapezgleichungen mit der Knotenregel",
+   "(7.5) R -> 0: aus (7.4) wird u' = u + (2 Z_w/n) Summe i_k (ein Knoten aus n halben Zellen)"
+  ]
+ },
+ "ohne_rechnung": {
+  "1.1": "die Maxwellschen Gleichungen selbst — Ausgangspunkt, nicht Folgerung (ihre Umformung in (1.2) ist geprueft)",
+  "3.11": "die Festsetzung R' = 0, G' = 0 (Idealisierung); was daraus folgt, steht in (3.12a/b) und ist geprueft",
+  "4.1": "die Definition der doppelten Laplace-Transformation (an einer Testfunktion dennoch nachgerechnet)",
+  "6.2": "die Stetigkeitsforderung an der Stossstelle — physikalische Setzung; ihre Folge (6.3) ist geprueft",
+  "6.11": "das Gleichungssystem des Sternpunkts als Aufstellung; seine Loesung (6.12)/(6.13) ist geprueft"
+ },
+ "kern_gleichungen": [
+  "2.3",
+  "2.6",
+  "3.21",
+  "3.23",
+  "3.24",
+  "5.3",
+  "5.5",
+  "5.6",
+  "5.7",
+  "6.12",
+  "6.13",
+  "6.16",
+  "7.1",
+  "7.2",
+  "7.3a",
+  "7.3b",
+  "7.4",
+  "7.5"
+ ],
+ "reiter_gleichungen": [
+  "2.3",
+  "2.6",
+  "3.18",
+  "3.19",
+  "3.21",
+  "3.23",
+  "3.24",
+  "5.3",
+  "5.5",
+  "5.6",
+  "5.7",
+  "6.12",
+  "6.13",
+  "6.16",
+  "7.3a",
+  "7.3b",
+  "7.4",
+  "7.5"
+ ],
+ "fehler": 0
+}
