@@ -33,6 +33,7 @@ entzerrt auf Folien, nichts weggelassen.
 | `bilder/` | die Bilder des Manuskripts |
 | `baue_labor.py`, `baue_beamer.py`, `beamer_kopf.tex` | die Bauskripte (pandoc, xelatex) |
 | `index.html` | leitet auf die Seite weiter, damit GitHub Pages sie unter der Adresse oben zeigt |
+| `Telegraphen_Labor_1.0.html` … | Wegweiser früherer Fassungen auf die aktuelle Seite, damit ein gemerkter Verweis oder eine zwischengespeicherte Weiterleitung nie ins Leere zeigt |
 
 ## Prüfung
 
