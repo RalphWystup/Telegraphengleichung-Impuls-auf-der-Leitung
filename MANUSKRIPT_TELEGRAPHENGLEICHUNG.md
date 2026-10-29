@@ -1,6 +1,6 @@
 ---
 title: "Die Telegraphengleichung — von den Maxwellschen Gleichungen zum Impuls auf der Leitung"
-subtitle: "Zwei getrennte, geschlossene Lösungswege: Laplace in der Zeit mit dem Verschiebungssatz, und die doppelte Laplace-Transformation. Fassung 1.4, 28. Oktober 2026"
+subtitle: "Zwei getrennte, geschlossene Lösungswege: Laplace in der Zeit mit dem Verschiebungssatz, und die doppelte Laplace-Transformation. Fassung 1.5, 29. Oktober 2026"
 author: "Prof. Dr.-Ing. Ralph Wystup, M.Sc. — erarbeitet zusammen mit der KI (Claude, Anthropic); jede Gleichung mit einem CAS-Skript nachgerechnet"
 lang: de
 documentclass: article
@@ -753,11 +753,11 @@ Das CAS-Skript rechnet (6.6)–(6.8), (6.10), (6.14a/b)–(6.16) und die Integra
 ## CAS-Skript und Abdeckungsnachweis
 
 `pruefung/cas_telegraphengleichung.py` (sympy) rechnet jede Gleichung dieses Manuskripts nach und sagt je
-Posten RICHTIG oder FALSCH; Ergebnis **115 von 115 RICHTIG**. Jeder Posten nennt in seinem Namen die
+Posten RICHTIG oder FALSCH; Ergebnis **121 von 121 RICHTIG**. Jeder Posten nennt in seinem Namen die
 Gleichungsnummern, die er prüft, und `pruefung/abdeckung.py` hält diese Liste gegen alle nummerierten
 Gleichungen des Manuskripts und gegen die Rechenregeln der Laborseite. Sein Ergebnis:
 
-> **Abdeckung vollständig: alle 92 Gleichungen des Manuskripts und alle 18 Rechenregeln der Laborseite
+> **Abdeckung vollständig: alle 96 Gleichungen des Manuskripts und alle 18 Rechenregeln der Laborseite
 > sind mit dem CAS nachgerechnet.**
 
 Fünf Gleichungen rechnen nichts aus, sondern setzen etwas fest; sie stehen im Abdeckungsskript einzeln mit
@@ -947,6 +947,74 @@ tatsächlichen Werten von $\Delta t/L'$ und $\Delta t/C'$ und beide Randknoten.
 Dass der Reiter keine Gleichung nennen kann, die nicht nachgerechnet ist, prüft `pruefung/abdeckung.py` mit: Es
 liest die Gleichungsnummern aus dem Reiter, aus dem Rechenkern und aus diesem Manuskript und hält alle drei gegen
 die Liste der CAS-Posten.
+
+## Ein dritter, unabhängiger Weg: die Leitung als LC-Kette
+
+Am 29.10.2026 kam der Befund, der rücklaufende Impuls werde an der Quelle falsch reflektiert. Die beiden
+Wege dieses Textes konnten die Frage nicht entscheiden, und zwar aus einem grundsätzlichen Grund: Die
+geschlossene Strahlensumme (3.24) und das Zeitschrittverfahren benutzen **denselben** Reflexionsfaktor
+$r_q = (R_i - Z_w)/(R_i + Z_w)$. Wäre der falsch, so zeigten beide übereinstimmend dasselbe Falsche. Ihr
+Abstand von $10^{-15}$ V beweist, dass beide richtig *rechnen*, nicht dass die Randbedingung richtig *ist*.
+
+Es braucht also einen Weg, der von Wellen und Reflexionsfaktoren nichts weiß. Die Leitung wird dazu durch
+eine Kette aus $N$ Gliedern ersetzt — Längsinduktivität $L'\,\mathrm{d}x$, Querkapazität $C'\,\mathrm{d}x$ —
+und es werden nur die beiden Kirchhoffschen Gesetze hingeschrieben:
+
+$$L'\,\mathrm{d}x\,\frac{\mathrm{d}i_k}{\mathrm{d}t} = u_k - u_{k+1}, \qquad k = 0 \dots N-1 \tag{7.6}$$
+
+$$C'\,\mathrm{d}x\,\frac{\mathrm{d}u_k}{\mathrm{d}t} = i_{k-1} - i_k, \qquad k = 1 \dots N-1 \tag{7.7}$$
+
+Am ersten Knoten sitzt die Quelle als **wirkliche Schaltung**: eine Spannungsquelle $e(t)$ mit
+Reihenwiderstand $R_i$, die in eine halbe Zelle speist.
+
+$$\frac{C'\,\mathrm{d}x}{2}\,\frac{\mathrm{d}u_0}{\mathrm{d}t}
+  = \frac{e(t) - u_0}{R_i} - i_0 \tag{7.8}$$
+
+Kein Reflexionsfaktor steht in (7.6) bis (7.8). Trotzdem muss sich einer ergeben, denn die Schaltung weiß
+ja nicht, dass sie keinen kennen soll. Dass es genau $r_q$ ist, sieht man, wenn man die Randbedingung
+$u(0,t) = e(t) - R_i\,i(0,t)$ in die beiden Wellen $u = u^+ + u^-$ und $i = (u^+ - u^-)/Z_w$ zerlegt:
+
+$$u^+ = \underbrace{\frac{Z_w}{R_i + Z_w}}_{\text{Einspeisung}}\,e(t)
+      \;+\; \underbrace{\frac{R_i - Z_w}{R_i + Z_w}}_{\textstyle r_q}\,u^- \tag{7.9}$$
+
+Der erste Summand ist der Vorfaktor von (3.24), der zweite der gesuchte Reflexionsfaktor. Beide folgen aus
+der Schaltung und sind nicht hineingesteckt.
+
+Gerechnet wird die Kette mit einem allgemeinen Integrator mit Schrittweitensteuerung, nicht mit dem
+Leapfrog-Verfahren des zweiten Weges — sonst prüfte man wieder dasselbe Verfahren. Zwei Entscheidungen
+machen den Vergleich erst aussagekräftig:
+
+* **Ein Gaußimpuls statt eines Rechtecks.** Eine Kette aus endlich vielen Gliedern bildet eine senkrechte
+  Kante nicht ab: Sie zerläuft und schwingt nach (Gitterdispersion). Das wäre ein Fehler des Prüfmittels,
+  nicht der Sache. Ein glatter Impuls ist bandbegrenzt und kommt sauber durch.
+* **Nur endliche $R_i$.** Für $R_i = 0$ wäre (7.8) keine Differentialgleichung mehr, sondern eine
+  Zwangsbedingung $u_0 = e(t)$; der Grenzfall folgt aus den endlichen Werten.
+
+Das Ergebnis, mit $N = 160$ Gliedern und fünf Fällen — $R_i = Z_w/3$, $Z_w$, $3Z_w$ am offenen Ende sowie
+$Z_a = 3Z_w$ und $Z_a = Z_w/2$ —, ist in `pruefung/dritter_weg_netzwerk.py` nachzulesen: Der größte Abstand
+zwischen Kettennetzwerk und Wellenrechnung beträgt $4{,}2 \cdot 10^{-3}$ V bei $E_0 = 1$ V, also
+0,4 Prozent, und er sitzt dort, wo der Impuls am steilsten ist. Er geht mit wachsendem $N$ zurück; es ist
+die endliche Gliederzahl der Kette, kein systematischer Unterschied. Die Quellreflexion ist damit auf einem
+Weg bestätigt, der sie nicht voraussetzt.
+
+## Warum die richtige Reflexion an der Quelle unsichtbar sein kann
+
+Derselbe Befund hatte noch einen zweiten Teil, und der betrifft nicht die Rechnung, sondern das Auge. Bei
+einer idealen Quelle ist $R_i = 0$ und damit $r_q = -1$: Die Quelle hält den Knoten auf $e(t)$ und wirkt
+für die ankommende Welle wie ein Kurzschluss. Die zurückgeworfene Welle ist dann genau das Negative der
+ankommenden, und ihre Summe ist an der Quelle **null**:
+
+$$u(0,t) = u^-(0,t) + u^+(0,t) = u^- - u^- = 0 .$$
+
+Im Bild der Spannung $u(x,t)$ verschwindet der Impuls also scheinbar, sobald er die Quelle erreicht, und
+taucht ein Stück später mit umgekehrtem Vorzeichen wieder auf. Das sieht nach einem Fehler aus und ist
+keiner — es ist dieselbe Erscheinung wie der Spannungsknoten vor einem Kurzschluss.
+
+Seit Fassung 1.7 zeichnet die Laborseite deshalb auf Wunsch die beiden Wellen $u^+$ und $u^-$ einzeln,
+und unter dem Abschluss steht in Zahlen, was die Quelle gerade tut: was ankommt, was zurückgeworfen wird,
+die Summe und $r_q$. Beim Rücklauf am Leerlauf liest man dort ab: ankommend $-1{,}000$ V, zurückgeworfen
+$+1{,}000$ V, Summe $0{,}000$ V, $r_q = -1{,}0000$. Die Zerlegung deckt sich mit der bisherigen Summe
+Zeile für Zeile auf $0{,}0$ V; der Rechenkern ist unverändert.
 
 # Was beim Nachrechnen gefunden wurde
 

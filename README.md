@@ -4,7 +4,7 @@
 
 Prof. Dr.-Ing. Ralph Wystup M.Sc. — erstellt mit KI und Agent (Claude Code, Anthropic)
 
-**Seite öffnen:** https://ralphwystup.github.io/Telegraphengleichung-Impuls-auf-der-Leitung/ — das Telegraphen-Labor 1.5: ein Impuls läuft über eine Doppelleitung, gerechnet
+**Seite öffnen:** https://ralphwystup.github.io/Telegraphengleichung-Impuls-auf-der-Leitung/ — das Telegraphen-Labor 1.8: ein Impuls läuft über eine Doppelleitung, gerechnet
 nach den im Manuskript hergeleiteten Regeln, auf zwei Wegen live gegeneinander (geschlossene Lösung mit dem
 Verschiebungssatz und Zeitschrittverfahren); Quelle mit Innenwiderstand, Abschluss, Sternpunkt-Verteiler, Zeitlupe;
 das Manuskript als Reiter in der Seite. Läuft offline.
@@ -14,20 +14,20 @@ Telegraphengleichung. Zwei getrennte, geschlossene Lösungswege: Laplace in der 
 (Weg A) und die doppelte Laplace-Transformation (Weg B). Kein Sinus — ein Impuls, der läuft, reflektiert wird und
 durch Stoßstellen geht. Dazu die Beläge der Doppelleitung, der Wellenwiderstand, die Anpassung an Stoßstellen mit
 dem Gleichungssystem, der reflexionsfreie Sternpunkt und der stetige Übergang. Jede Gleichung ist mit einem
-CAS-Skript nachgerechnet (115 von 115 RICHTIG), der Impuls im Zeitbereich ohne Laplace gegengerechnet (≤ 2·10⁻¹² V).
+CAS-Skript nachgerechnet (121 von 121 RICHTIG), der Impuls im Zeitbereich ohne Laplace gegengerechnet (≤ 2·10⁻¹² V).
 
 ![Der Impuls auf der angepassten Leitung](bilder/impuls_momentaufnahmen.png)
 
-**Manuskript:** [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.4.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.4.pdf) — Manuskript 1.4 · Labor 1.5 · 28. Oktober 2026. **Beamer-Fassung:** [`BEAMER_TELEGRAPHENGLEICHUNG_1.4.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.4.pdf) — derselbe Text,
+**Manuskript:** [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.5.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.5.pdf) — Manuskript 1.5 · Labor 1.8 · 29. Oktober 2026. **Beamer-Fassung:** [`BEAMER_TELEGRAPHENGLEICHUNG_1.5.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.5.pdf) — derselbe Text,
 entzerrt auf Folien, nichts weggelassen.
 
 ## Was drin ist
 
 | Datei | Inhalt |
 |:--|:--|
-| [`Telegraphen_Labor_1.5.html`](Telegraphen_Labor_1.5.html) | das Telegraphen-Labor: Reiter Labor (Impuls, R_i, Z_a, Zeitlupe), Verzweigung (Sternpunkt 1 auf 2 mit R), Manuskript |
-| [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.4.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.4.pdf) / [`.md`](MANUSKRIPT_TELEGRAPHENGLEICHUNG.md) | das Manuskript: Maxwell → Wellengleichung, Weg A, Weg B, Beläge, Stoßstellen, Prüfung, Zusammenfassung |
-| [`BEAMER_TELEGRAPHENGLEICHUNG_1.4.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.4.pdf) | die Beamer-Fassung (16:9), gesetzt aus derselben Quelle |
+| [`Telegraphen_Labor_1.8.html`](Telegraphen_Labor_1.8.html) | das Telegraphen-Labor: Reiter Labor (Impuls, R_i, Z_a, Zeitlupe), Verzweigung (Sternpunkt 1 auf 2 mit R), Manuskript |
+| [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.5.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.5.pdf) / [`.md`](MANUSKRIPT_TELEGRAPHENGLEICHUNG.md) | das Manuskript: Maxwell → Wellengleichung, Weg A, Weg B, Beläge, Stoßstellen, Prüfung, Zusammenfassung |
+| [`BEAMER_TELEGRAPHENGLEICHUNG_1.5.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.5.pdf) | die Beamer-Fassung (16:9), gesetzt aus derselben Quelle |
 | `labor/` | der Rechenkern der Seite (`labor_kern.js`) und seine Prüfungen in Node und im Browser |
 | `pruefung/` | CAS-Skript (sympy) mit Ergebnis, Abdeckungsnachweis, Zeitbereichsrechnung mit Ergebnis, Bilderzeugung |
 | `bilder/` | die Bilder des Manuskripts |

@@ -91,7 +91,11 @@
   "7.3a",
   "7.3b",
   "7.4",
-  "7.5"
+  "7.5",
+  "7.6",
+  "7.7",
+  "7.8",
+  "7.9"
  ],
  "geprueft": {
   "1.1": [
@@ -221,7 +225,8 @@
   ],
   "3.24": [
    "(3.24) R_i = 0 gibt r_q = -1 und K1 -> E/(1 + r_a e^(-2 gamma l)); R_i = Zw gibt r_q = 0 und K1 = E/2",
-   "(3.22) ist (3.24) mit R_i = 0 (r_q = -1): beide Reihen stimmen Glied fuer Glied ueberein"
+   "(3.22) ist (3.24) mit R_i = 0 (r_q = -1): beide Reihen stimmen Glied fuer Glied ueberein",
+   "(3.24) Zerlegung: das erste Glied der Summe ist die hinlaufende, das zweite die ruecklaufende Welle; ihre Summe ist wieder Gl. 3.24 (Grundlage von geschlossenTeile)"
   ],
   "3.3": [
    "(3.3) d2U/dx2 = (R'+sL')(G'+sC') U [Folie 4.34]",
@@ -425,6 +430,19 @@
   "7.5": [
    "Sternknoten (7.3a)/(7.3b)/(7.4)/(7.5): u_S' = (Z/n) sum b_k loest die drei Trapezgleichungen mit der Knotenregel",
    "(7.5) R -> 0: aus (7.4) wird u' = u + (2 Z_w/n) Summe i_k (ein Knoten aus n halben Zellen)"
+  ],
+  "7.6": [
+   "(7.6) Kettengleichung L' dx di/dt = u_k - u_(k+1) wird fuer dx->0 zu L' di/dt = -du/dx (= Gl. 2.3)"
+  ],
+  "7.7": [
+   "(7.7) Kettengleichung C' dx du/dt = i_(k-1) - i_k wird fuer dx->0 zu C' du/dt = -di/dx (= Gl. 2.6)"
+  ],
+  "7.8": [
+   "(7.8) Quellknoten: fuer dx->0 bleibt die Klemmenbedingung u(0) = e - R_i i(0)"
+  ],
+  "7.9": [
+   "(7.9) aus u(0)=e-R_i i(0) folgt u+ = Z_w/(R_i+Z_w) e + (R_i-Z_w)/(R_i+Z_w) u- (Einspeisefaktor von Gl. 3.24 und r_q von Gl. 3.23)",
+   "(7.9) Sonderfaelle: R_i=0 gibt r_q=-1 (ideale Quelle), R_i=Z_w gibt r_q=0 (angepasst), R_i->unendlich gibt r_q=+1 (offene Quelle)"
   ]
  },
  "ohne_rechnung": {

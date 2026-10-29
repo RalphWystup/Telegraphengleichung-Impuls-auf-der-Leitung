@@ -3,7 +3,7 @@ const { chromium } = require('/tmp/node_modules/playwright');
 (async () => {
   const b = await chromium.launch(); const pg = await b.newPage({ viewport: { width: 1360, height: 900 } });
   const fehler = []; pg.on('pageerror', e => fehler.push(String(e))); pg.on('console', m => { if (m.type() === 'error') fehler.push(m.text()); });
-  await pg.goto('file:///workspace/Telegraphengleichung/Telegraphen_Labor_1.5.html');
+  await pg.goto('file:///workspace/Telegraphengleichung/Telegraphen_Labor_1.8.html');
   console.log('Titel:', await pg.title());
   const aus = {};
   for (const [name, o, schritte] of [['Leerlauf, Ri=0', { art: 'leerlauf', Ri: 0 }, 900], ['Ri=120, Za=1000', { art: 'wert', Za: 1000, Ri: 120 }, 1100], ['Gauss, Anpassung', { form: 'gauss', art: 'anpassung', Ri: 0, T: 1.5 }, 700]]) {

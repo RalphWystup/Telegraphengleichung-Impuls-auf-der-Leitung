@@ -6,14 +6,14 @@ mit MathML und eingebetteten Bildern). Rechenkern: labor/labor_kern.js (in Node 
 import json, re, subprocess, time, base64
 from pathlib import Path
 H = Path(__file__).resolve().parent
-FASSUNG = "1.5"; STAND = "28.10.2026"
+FASSUNG = "1.8"; STAND = "29.10.2026"
 kern = (H / "labor" / "labor_kern.js").read_text(encoding="utf-8").split("if (typeof module !== 'undefined')")[0]
 # Manuskript als HTML-Rumpf mit MathML und eingebetteten Bildern
 r = subprocess.run(["pandoc", "MANUSKRIPT_TELEGRAPHENGLEICHUNG.md", "-s", "--embed-resources", "--mathml", "-o", "-"], cwd=H, capture_output=True, text=True)
 doku = re.search(r"<body[^>]*>(.*)</body>", r.stdout, re.S).group(1)
 doku = doku.replace("<script", "<!--script").replace("</script>", "</script-->")       # kein Fremdskript im Reiter
 REVISION = json.dumps({"revision": f"Telegraphen_Labor_{FASSUNG}", "datum": STAND, "projekt": "Telegraphengleichung",
-    "gebaut_von": ["baue_labor.py (labor/labor_kern.js + MANUSKRIPT_TELEGRAPHENGLEICHUNG.md)"], "aenderungen": ["1.1: Quellenwiderstand als beschriftetes Eingabefeld mit Vorgaben 0 und Z_w; Oszilloskop mit Achsenmarken, Zeitzeiger und Erklaerung", "1.2: Wellenwiderstand, v und tau0 live bei der Leitung; Knoepfe R_i = Z_w, Z_a = Z_w (als Wert) und beide anpassen; Impulsdauer mit Impulslaenge v*T; Gaussimpuls nach Gl. 7.1 mit sigma(t)", "1.4: Reiter Rechenweg — jeder Schritt der Simulation mit seiner Gleichungsnummer und den eingestellten Zahlen (ZURUECKGEZOGEN: die Hilfsfunktion des Reiters hiess schritt() wie der Zeitschritt des Labors und hat ihn ueberschrieben — die Seite rechnete nicht mehr)", "1.5: derselbe Reiter, Hilfsfunktion in wegschritt() umbenannt; labor/vollprobe.js spielt alle Bedienelemente durch, labor/pruefe_seite.js nimmt die Seite mit harten Sollwerten ab (die Zeit muss laufen, beide Wege muessen sich decken)", "1.3: Reiter Verzweigung (Sternpunkt 1 auf 2, ein R fuer alle drei Zweige, optimal oder frei, eigener Start); feine Spannungsskala (1-2-5-Raster) und Amplitude jedes Impulses direkt am Impuls; Ersatzschaltbild im Manuskript berichtigt"],
+    "gebaut_von": ["baue_labor.py (labor/labor_kern.js + MANUSKRIPT_TELEGRAPHENGLEICHUNG.md)"], "aenderungen": ["1.8: Der dritte, unabhaengige Weg steht jetzt im Manuskript (Reiter MANUSKRIPT): die Leitung als LC-Kette aus den Kirchhoffschen Gesetzen, Gl. 7.6 bis 7.9, mit der Herleitung des Einspeisefaktors und des Reflexionsfaktors r_q aus der Quellschaltung selbst. Dazu der Abschnitt, warum eine RICHTIGE Reflexion an einer idealen Quelle unsichtbar sein kann. CAS 121 Posten, Abdeckung 96 Gleichungen.", "1.7: Hin- und ruecklaufende Welle werden einzeln gezeichnet, und unter dem Abschluss steht in Zahlen, was die Quelle gerade tut (ankommend, zurueckgeworfen, Summe, r_q). Anlass: sein Befund, der ruecklaufende Impuls werde an der Quelle falsch reflektiert. Er wird richtig reflektiert -- bei R_i = 0 ist r_q = -1, ankommende und zurueckgeworfene Welle loeschen sich an der Quelle zu null, und die Reflexion ist in der Summe u(0,t) deshalb unsichtbar. Belegt mit einem DRITTEN, unabhaengigen Weg (pruefung/dritter_weg_netzwerk.py): eine LC-Kette aus den Kirchhoffschen Gesetzen, ohne jeden Reflexionsfaktor, deckt sich in fuenf Faellen auf 4e-3 V.", "1.6: Amplitudenbeschriftung erkennt jetzt die STUFEN eines Impulses. Am Leerlauf ueberlagern sich hinlaufender und ruecklaufender Impuls zu einer zweistufigen Figur (1 V und 2 V); bisher stand der Hoechstwert 2,000 V in der geometrischen Mitte des ganzen Bereichs, also ueber der 1-V-Stufe, und die 1-V-Stufe trug keine Zahl. Jede Stufe bekommt jetzt ihre eigene Zahl an ihrer eigenen Mitte; eine glatte Kurve ohne Kanten (Gaussimpuls) bleibt eine Stufe. Die Rechnung war unveraendert richtig: beide Wege decken sich am Leerlauf, am Kurzschluss und bei freiem Z_a auf besser als 1e-14 V.", "1.1: Quellenwiderstand als beschriftetes Eingabefeld mit Vorgaben 0 und Z_w; Oszilloskop mit Achsenmarken, Zeitzeiger und Erklaerung", "1.2: Wellenwiderstand, v und tau0 live bei der Leitung; Knoepfe R_i = Z_w, Z_a = Z_w (als Wert) und beide anpassen; Impulsdauer mit Impulslaenge v*T; Gaussimpuls nach Gl. 7.1 mit sigma(t)", "1.4: Reiter Rechenweg — jeder Schritt der Simulation mit seiner Gleichungsnummer und den eingestellten Zahlen (ZURUECKGEZOGEN: die Hilfsfunktion des Reiters hiess schritt() wie der Zeitschritt des Labors und hat ihn ueberschrieben — die Seite rechnete nicht mehr)", "1.5: derselbe Reiter, Hilfsfunktion in wegschritt() umbenannt; labor/vollprobe.js spielt alle Bedienelemente durch, labor/pruefe_seite.js nimmt die Seite mit harten Sollwerten ab (die Zeit muss laufen, beide Wege muessen sich decken)", "1.3: Reiter Verzweigung (Sternpunkt 1 auf 2, ein R fuer alle drei Zweige, optimal oder frei, eigener Start); feine Spannungsskala (1-2-5-Raster) und Amplitude jedes Impulses direkt am Impuls; Ersatzschaltbild im Manuskript berichtigt"],
     "rechenregeln": ["Weg 1: Gl. 3.24 (Summe verzoegerter Impulse, Verschiebungssatz)", "Weg 2: Gl. 2.3/2.6 Leapfrog, dt = dx/v, Randknoten halbe Zellen mit Trapezregel", "Belaege Gl. 5.3/5.5", "Gaussimpuls Gl. 7.1, Impulslaenge Gl. 7.2"],
     "pruefung": "labor/vollprobe.js (alle Knoepfe und Eingaben), labor/pruefe_seite.js (Abnahme im Browser), labor/pruefe_kern.js (Node) gegen pruefung/impuls_auf_leitung.py: <= 3e-14 V in zehn Faellen (sechs Rechteck, ein Gauss, drei Verzweigung); pruefung/abdeckung.py weist nach, dass alle 18 Rechenregeln dieser Seite und alle 92 Gleichungen des Manuskripts mit dem CAS nachgerechnet sind"}, ensure_ascii=False, indent=1)
 
@@ -78,6 +78,8 @@ canvas{width:100%;background:#14171c;border-radius:6px;display:block}
    <label>Z_a / Ω (bei „Wert")<input type="number" id="Za" value="100" step="10" min="0"></label>
    <div class="zeile"><button class="k leise" onclick="setzeZa()">Z_a = Z_w übernehmen</button><button class="k leise" onclick="setzeRi();setzeZa()">R_i und Z_a = Z_w (beide anpassen)</button></div>
    <div class="hinweis" id="zaAnzeige">—</div>
+   <label><input type="checkbox" id="teile" checked> hin- und rücklaufende Welle einzeln zeigen</label>
+   <div class="hinweis" id="quelleAnzeige">—</div>
   </div>
   <div class="karte"><h3>Zeitlupe</h3>
    <label>Dargestellte Zeit je Sekunde: <span id="zlText">2 ns/s</span><input type="range" id="zl" min="0.2" max="20" step="0.2" value="2"></label>
@@ -190,18 +192,58 @@ function spannungsskala(c,x0,x1,ty,umax,einheit){
   return d;
 }
 /* Jeder zusammenhängende Bereich mit |u| über der Schwelle ist ein Impuls; sein Scheitelwert wird angeschrieben. */
-function impulse(ys,schwelle){ const aus=[]; let k=0;
-  while(k<ys.length){ if(Math.abs(ys[k])>schwelle){ let j=k,best=k;
-      while(j<ys.length && Math.abs(ys[j])>schwelle){ if(Math.abs(ys[j])>Math.abs(ys[best])) best=j; j++; }
-      aus.push({von:k, bis:j-1, mitte:(k+j-1)/2, wert:ys[best]}); k=j; } else k++; }
+function impulse(ys,schwelle){
+  /* Findet die Impulse in einer Kurve und — das ist der Punkt — ihre STUFEN.
+     Befund vom 29.10.2026 (sein Wort: „musst du prüfen ob der impuls im nichtabgeschlossenen anfang und
+     ende richtig addiert wird, das sieht sehr komisch aus"): Die erste Fassung nahm einen zusammenhängenden
+     Bereich über der Schwelle, suchte darin den Höchstwert und schrieb ihn in die geometrische MITTE des
+     Bereichs. Am Leerlauf überlagern sich hinlaufender und rücklaufender Impuls aber zu einer zweistufigen
+     Figur: 1 V auf dem noch nicht überlagerten Stück, 2 V auf dem überlagerten. Dann stand „2,000 V" mitten
+     über der 1-V-Stufe, und die 1-V-Stufe trug gar keine Zahl. Die Rechnung war richtig (beide Wege decken
+     sich auf 7e-15 V), die Beschriftung war falsch.
+     Jetzt wird jeder Bereich an seinen KANTEN zerlegt: Ein Sprung von mehr als dh zwischen zwei Stützstellen
+     beginnt eine neue Stufe. Jede Stufe, die breit genug ist, bekommt ihre eigene Zahl an ihrer eigenen
+     Mitte. Eine glatte Kurve ohne Kanten (Gaußimpuls) bleibt eine einzige Stufe — dort ändert sich nichts. */
+  const aus=[]; let gross=0;
+  for(const y of ys) if(Math.abs(y)>gross) gross=Math.abs(y);
+  const dh = Math.max(schwelle, 0.06*gross);          // ab dieser Sprunghöhe beginnt eine neue Stufe
+  const mindest = Math.max(3, Math.round(ys.length*0.02));   // schmaler als das ist eine Flanke, keine Stufe
+  let k=0;
+  while(k<ys.length){
+    if(Math.abs(ys[k])<=schwelle){ k++; continue; }
+    let j=k; while(j<ys.length && Math.abs(ys[j])>schwelle) j++;      // zusammenhängender Bereich [k, j-1]
+    const stufen=[]; let a=k;
+    for(let i=k;i<j;i++){
+      if(i+1<j && Math.abs(ys[i+1]-ys[i])>dh){ stufen.push([a,i]); a=i+1; }
+    }
+    stufen.push([a,j-1]);
+    for(const [v,bq] of stufen){
+      if(bq-v+1 < mindest) continue;                                   // Flanke, nicht beschriften
+      let best=v; for(let i=v;i<=bq;i++) if(Math.abs(ys[i])>Math.abs(ys[best])) best=i;
+      aus.push({von:v, bis:bq, mitte:(v+bq)/2, wert:ys[best]});
+    }
+    if(!aus.length || aus[aus.length-1].bis < k) {                     // nur Flanken: dann wie bisher
+      let best=k; for(let i=k;i<j;i++) if(Math.abs(ys[i])>Math.abs(ys[best])) best=i;
+      aus.push({von:k, bis:j-1, mitte:(k+j-1)/2, wert:ys[best]});
+    }
+    k=j;
+  }
   return aus; }
-function beschrifteImpulse(c,ys,tx,ty,farbe,schwelle,nachkomma,yFrei){
+function beschrifteImpulse(c,ys,tx,ty,farbe,schwelle,nachkomma,yFrei,xMin,xMax){
   c.font='bold 12px system-ui'; c.textAlign='center'; c.fillStyle=farbe;
   const frei = yFrei===undefined?30:yFrei;                 // darüber liegt die Überschrift des Bildes
-  for(const q of impulse(ys,schwelle)){ const x=tx(q.mitte), y=ty(q.wert);
+  for(const q of impulse(ys,schwelle)){
+    const text = q.wert.toFixed(nachkomma===undefined?3:nachkomma)+' V';
+    const halb = c.measureText(text).width/2 + 2;
+    let x=tx(q.mitte); const y=ty(q.wert);
+    // Eine Stufe am Rand (etwa die Verdopplung am Leerlauf) sitzt dicht an der Kante; die Zahl wird
+    // hineingeschoben, damit sie nicht halb abgeschnitten dasteht. Der Strich bleibt an der Stufe.
+    if(xMin!==undefined) x=Math.max(x, xMin+halb);
+    if(xMax!==undefined) x=Math.min(x, xMax-halb);
     const yT = (q.wert>=0 && y-7>frei) ? y-7 : y+16;       // in die Lücke schreiben, nicht über den Rand
-    c.fillText(q.wert.toFixed(nachkomma===undefined?3:nachkomma)+' V', x, yT);
-    c.strokeStyle=farbe; c.lineWidth=1; c.beginPath(); c.moveTo(x-5,y); c.lineTo(x+5,y); c.stroke(); }
+    c.fillText(text, x, yT);
+    const xs=tx(q.mitte);
+    c.strokeStyle=farbe; c.lineWidth=1; c.beginPath(); c.moveTo(xs-5,y); c.lineTo(xs+5,y); c.stroke(); }
   return impulse(ys,schwelle).length; }
 function zeichne(){
   if(!P) return;
@@ -212,11 +254,38 @@ function zeichne(){
   const dL=spannungsskala(c,x0,x1,tyL,umax,'V');
   c.fillStyle='#c7ccd4'; c.font='12px system-ui'; c.textAlign='left'; c.fillText('x = 0 (Quelle, R_i = '+P.Ri+' Ω)',x0,h-8); c.textAlign='right'; c.fillText('x = l ('+($('art').selectedOptions[0].text)+')',x1,h-8);
   c.fillText('t = '+(tAnzeige*1e9).toFixed(2)+' ns   Raster '+dL.toFixed(2)+' V',x1,18);
+  {  // Was die Quelle in diesem Augenblick tut -- in Zahlen, nicht nur im Bild
+    const q=LABOR.geschlossenTeile(P,0,tAnzeige);
+    const a=$('quelleAnzeige');
+    if(a) a.textContent='An der Quelle (x = 0): ankommend u⁻ = '+q.rueck.toFixed(3)+' V, '
+      +'zurückgeworfen u⁺ = '+q.hin.toFixed(3)+' V, Summe u(0,t) = '+q.summe.toFixed(3)+' V'
+      +'   (r_q = '+q.rq.toFixed(4)+'). Bei R_i = 0 ist r_q = −1: die Quelle hält den Knoten, '
+      +'beide Wellen löschen sich dort, die Reflexion ist in u(0,t) unsichtbar.';
+  }
+  // Hin- und ruecklaufende Welle einzeln (Gl. 3.24, nach den beiden Gliedern getrennt).
+  // Eingebaut am 29.10.2026 auf seinen Befund „der rücklaufende Impuls wird an der Quelle falsch
+  // reflektiert". Er wird nicht falsch reflektiert — bei R_i = 0 loescht die ankommende Welle sich an der
+  // Quelle mit der zurueckgeworfenen zu null, die Summe u(x,t) ist dort also 0, und die Reflexion ist in
+  // der Summe unsichtbar. Getrennt gezeichnet sieht man beide Wellen und kann die Reflexion ablesen.
+  // Nachgewiesen mit einem DRITTEN, unabhaengigen Weg (pruefung/dritter_weg_netzwerk.py): einer LC-Kette,
+  // die keine Reflexionsfaktoren kennt, sondern nur die Kirchhoffschen Gesetze; Abstand 4e-3 V.
+  if($('teile') && $('teile').checked){
+    const hin=[], rueck=[];
+    for(let k=0;k<=300;k++){ const q=LABOR.geschlossenTeile(P,P.l*k/300,tAnzeige); hin.push(q.hin); rueck.push(q.rueck); }
+    for(const [ys,farbe,strich] of [[hin,'#4fd48a',[3,3]],[rueck,'#f0a860',[3,3]]]){
+      c.strokeStyle=farbe; c.lineWidth=1.4; c.setLineDash(strich); c.beginPath();
+      for(let k=0;k<=300;k++){ const px=x0+(x1-x0)*k/300, py=tyL(ys[k]); k?c.lineTo(px,py):c.moveTo(px,py);} c.stroke();
+    }
+    c.setLineDash([]);
+    c.font='11px system-ui'; c.textAlign='left';
+    c.fillStyle='#4fd48a'; c.fillText('— hinlaufend u⁺', x0+6, 34);
+    c.fillStyle='#f0a860'; c.fillText('— rücklaufend u⁻', x0+6, 48);
+  }
   // Weg 1 (geschlossen) an 300 Stellen
   const w1=[]; for(let k=0;k<=300;k++) w1.push(LABOR.geschlossen(P,P.l*k/300,tAnzeige));
   c.strokeStyle='#4ea1ff'; c.lineWidth=2; c.beginPath();
   for(let k=0;k<=300;k++){ const px=x0+(x1-x0)*k/300, py=tyL(w1[k]); k?c.lineTo(px,py):c.moveTo(px,py);} c.stroke();
-  beschrifteImpulse(c,w1,k=>x0+(x1-x0)*k/300,tyL,'#9ad0ff',0.01*E0);
+  beschrifteImpulse(c,w1,k=>x0+(x1-x0)*k/300,tyL,'#9ad0ff',0.01*E0,undefined,undefined,x0,x1);
   // Weg 2 (Zeitschritt)
   c.strokeStyle='#ffb347'; c.setLineDash([6,5]); c.beginPath();
   for(let k=0;k<=N;k++){ const px=x0+(x1-x0)*k/N, py=yM-Z.u[k]*sk; k?c.lineTo(px,py):c.moveTo(px,py);} c.stroke(); c.setLineDash([]);
@@ -265,7 +334,7 @@ function sternZeichne(){
     for(let j=0;j<=200;j++){ const px=x0+(x1-x0)*j/200, py=tyS(w1s[j]); j?c.lineTo(px,py):c.moveTo(px,py);} c.stroke();
     c.strokeStyle='#ffb347'; c.setLineDash([6,5]); c.beginPath();
     for(let j=0;j<=NS;j++){ const px=x0+(x1-x0)*j/NS, py=tyS(SZ.u[k][j]); j?c.lineTo(px,py):c.moveTo(px,py);} c.stroke(); c.setLineDash([]);
-    beschrifteImpulse(c,w1s,j=>x0+(x1-x0)*j/200,tyS,'#9ad0ff',0.01*E0); }
+    beschrifteImpulse(c,w1s,j=>x0+(x1-x0)*j/200,tyS,'#9ad0ff',0.01*E0,undefined,undefined,x0,x1); }
   c.fillStyle='#c7ccd4'; c.textAlign='right'; c.fillText('t = '+(sT*1e9).toFixed(2)+' ns   R = '+SR.toFixed(2)+' Ω   Raster '+dS.toFixed(2)+' V',x1,14);
   // Oszilloskop
   const es=$('sternSzene'), w2=es.clientWidth, h2=+es.getAttribute('height'); es.width=w2*dpr; es.height=h2*dpr; es.style.height=h2+'px';

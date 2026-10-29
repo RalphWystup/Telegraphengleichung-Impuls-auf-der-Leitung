@@ -22,6 +22,23 @@ const LABOR = (() => {
     for (let n = 0; n <= nmax; n++) { u += g * (e(t - (2 * n * l + x) / v) + ra * e(t - (2 * (n + 1) * l - x) / v)); g *= rq * ra; if (Math.abs(g) < 1e-12) break; }
     return Zw / (Ri + Zw) * u;
   }
+  // Dieselbe Summe wie Gl. 3.24, aber nach HIN- und RUECKLAUFENDER Welle getrennt. Neu am 29.10.2026 auf
+  // seinen Befund „der rücklaufende Impuls wird an der Quelle falsch reflektiert": Bei R_i = 0 loescht die
+  // ankommende Welle sich mit der zurueckgeworfenen an der Quelle zu null — die Reflexion ist richtig, aber
+  // in der Summe u(x,t) unsichtbar. Getrennt gezeichnet sieht man beide. geschlossen() bleibt unveraendert;
+  // hin + rueck ergibt Zeile fuer Zeile wieder geschlossen().
+  function geschlossenTeile(p, x, t, nmax = 12) {
+    const { Zw, v, l, Ri, Za, e } = p;
+    const ra = (Za === Infinity) ? 1 : (Za - Zw) / (Za + Zw), rq = (Ri - Zw) / (Ri + Zw);
+    let hin = 0, rueck = 0, g = 1;
+    for (let n = 0; n <= nmax; n++) {
+      hin   += g * e(t - (2 * n * l + x) / v);                       // laeuft nach +x
+      rueck += g * ra * e(t - (2 * (n + 1) * l - x) / v);            // laeuft nach -x
+      g *= rq * ra; if (Math.abs(g) < 1e-12) break;
+    }
+    const k = Zw / (Ri + Zw);
+    return { hin: k * hin, rueck: k * rueck, summe: k * (hin + rueck), ra, rq };
+  }
   function zeitschritt(p, N) {                     // Weg 2: Zustand, Schritt für Schritt
     const { Zw, v, l, Ri, Za, e, L1, C1 } = p; const dx = l / N, dt = dx / v;
     const u = new Float64Array(N + 1), i = new Float64Array(N); let n = 0;
@@ -88,6 +105,6 @@ const LABOR = (() => {
       }
     };
   }
-  return { belaege, quelle, geschlossen, zeitschritt, stern, verzweigungStrahlen, verzweigungGeschlossen, verzweigungZeitschritt };
+  return { belaege, quelle, geschlossen, geschlossenTeile, zeitschritt, stern, verzweigungStrahlen, verzweigungGeschlossen, verzweigungZeitschritt };
 })();
 if (typeof module !== 'undefined') module.exports = LABOR;

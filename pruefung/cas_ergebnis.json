@@ -944,6 +944,54 @@
    "richtig": true,
    "zusatz": "C' 9.2853 gegen 9.2931 pF/m, L' 1.1983 gegen 1.1973 uH/m",
    "gleichungen": []
+  },
+  {
+   "posten": "(7.6) Kettengleichung L' dx di/dt = u_k - u_(k+1) wird fuer dx->0 zu L' di/dt = -du/dx (= Gl. 2.3)",
+   "richtig": true,
+   "zusatz": "Taylor: u(x+dx) = u(x) + dx du/dx + O(dx^2)",
+   "gleichungen": [
+    "7.6"
+   ]
+  },
+  {
+   "posten": "(7.7) Kettengleichung C' dx du/dt = i_(k-1) - i_k wird fuer dx->0 zu C' du/dt = -di/dx (= Gl. 2.6)",
+   "richtig": true,
+   "zusatz": "Taylor: i(x+dx) = i(x) + dx di/dx + O(dx^2)",
+   "gleichungen": [
+    "7.7"
+   ]
+  },
+  {
+   "posten": "(7.8) Quellknoten: fuer dx->0 bleibt die Klemmenbedingung u(0) = e - R_i i(0)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "7.8"
+   ]
+  },
+  {
+   "posten": "(7.9) aus u(0)=e-R_i i(0) folgt u+ = Z_w/(R_i+Z_w) e + (R_i-Z_w)/(R_i+Z_w) u- (Einspeisefaktor von Gl. 3.24 und r_q von Gl. 3.23)",
+   "richtig": true,
+   "zusatz": "(R_i*u^- + Z_w*e - Z_w*u^-)/(R_i + Z_w)",
+   "gleichungen": [
+    "7.9"
+   ]
+  },
+  {
+   "posten": "(7.9) Sonderfaelle: R_i=0 gibt r_q=-1 (ideale Quelle), R_i=Z_w gibt r_q=0 (angepasst), R_i->unendlich gibt r_q=+1 (offene Quelle)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "7.9"
+   ]
+  },
+  {
+   "posten": "(3.24) Zerlegung: das erste Glied der Summe ist die hinlaufende, das zweite die ruecklaufende Welle; ihre Summe ist wieder Gl. 3.24 (Grundlage von geschlossenTeile)",
+   "richtig": true,
+   "zusatz": "",
+   "gleichungen": [
+    "3.24"
+   ]
   }
  ],
  "gleichungen_geprueft": [
@@ -1038,7 +1086,11 @@
   "7.3a",
   "7.3b",
   "7.4",
-  "7.5"
+  "7.5",
+  "7.6",
+  "7.7",
+  "7.8",
+  "7.9"
  ],
  "alle_richtig": true
 }

@@ -1,35 +1,15 @@
 <meta charset="utf-8">
-<!-- kopfangaben:anfang -->
-<meta name="description" content="Von den Maxwellschen Gleichungen zur Wellengleichung, vom Ersatzschaltbild zur Telegraphengleichung — und zurück in die Zeit mit dem Verschiebungssatz. Ein Impuls läuft, wird reflektiert und geht durch Stoßstellen; zwei getrennte Lösungswege rechnen im Browser live gegeneinander.">
-<meta name="author" content="Prof. Dr.-Ing. Ralph Wystup M.Sc.">
-<meta name="keywords" content="Telegraphengleichung, Laplace-Transformation, Verschiebungssatz, Wellenwiderstand, Leitungstheorie, Reflexion">
-<link rel="canonical" href="https://ralphwystup.github.io/Telegraphengleichung-Impuls-auf-der-Leitung/">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="de_DE">
-<meta property="og:site_name" content="Ralph Wystup — Elektrotechnik">
-<meta property="og:title" content="Die Telegraphengleichung: vom Feld zum Impuls auf der Leitung">
-<meta property="og:description" content="Von den Maxwellschen Gleichungen zur Wellengleichung, vom Ersatzschaltbild zur Telegraphengleichung — und zurück in die Zeit mit dem Verschiebungssatz. Ein Impuls läuft, wird reflektiert und geht durch Stoßstellen; zwei getrennte Lösungswege rechnen im Browser live gegeneinander.">
-<meta property="og:url" content="https://ralphwystup.github.io/Telegraphengleichung-Impuls-auf-der-Leitung/Telegraphen_Labor_1.5.html">
-<meta property="og:image" content="https://ralphwystup.github.io/Foto_Ralph_Wystup.jpg">
-<meta name="twitter:card" content="summary">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Die Telegraphengleichung: vom Feld zum Impuls auf der Leitung",
- "description":"Von den Maxwellschen Gleichungen zur Wellengleichung, vom Ersatzschaltbild zur Telegraphengleichung — und zurück in die Zeit mit dem Verschiebungssatz. Ein Impuls läuft, wird reflektiert und geht durch Stoßstellen; zwei getrennte Lösungswege rechnen im Browser live gegeneinander.","url":"https://ralphwystup.github.io/Telegraphengleichung-Impuls-auf-der-Leitung/","inLanguage":"de",
- "license":"https://opensource.org/licenses/MIT",
- "author":{"@type":"Person","name":"Prof. Dr.-Ing. Ralph Wystup M.Sc.","url":"https://ralphwystup.github.io/"},
- "publisher":{"@type":"Person","name":"Prof. Dr.-Ing. Ralph Wystup M.Sc."},
- "isPartOf":{"@type":"Collection","name":"Lehr- und Laborarbeiten zur Elektrotechnik","url":"https://ralphwystup.github.io/"},
- "keywords":"Telegraphengleichung, Laplace-Transformation, Verschiebungssatz, Wellenwiderstand, Leitungstheorie, Reflexion"}
-</script>
-<!-- kopfangaben:ende -->
 <script type="application/json" id="revision">{
- "revision": "Telegraphen_Labor_1.5",
- "datum": "28.10.2026",
+ "revision": "Telegraphen_Labor_1.8",
+ "datum": "29.10.2026",
  "projekt": "Telegraphengleichung",
  "gebaut_von": [
   "baue_labor.py (labor/labor_kern.js + MANUSKRIPT_TELEGRAPHENGLEICHUNG.md)"
  ],
  "aenderungen": [
+  "1.8: Der dritte, unabhaengige Weg steht jetzt im Manuskript (Reiter MANUSKRIPT): die Leitung als LC-Kette aus den Kirchhoffschen Gesetzen, Gl. 7.6 bis 7.9, mit der Herleitung des Einspeisefaktors und des Reflexionsfaktors r_q aus der Quellschaltung selbst. Dazu der Abschnitt, warum eine RICHTIGE Reflexion an einer idealen Quelle unsichtbar sein kann. CAS 121 Posten, Abdeckung 96 Gleichungen.",
+  "1.7: Hin- und ruecklaufende Welle werden einzeln gezeichnet, und unter dem Abschluss steht in Zahlen, was die Quelle gerade tut (ankommend, zurueckgeworfen, Summe, r_q). Anlass: sein Befund, der ruecklaufende Impuls werde an der Quelle falsch reflektiert. Er wird richtig reflektiert -- bei R_i = 0 ist r_q = -1, ankommende und zurueckgeworfene Welle loeschen sich an der Quelle zu null, und die Reflexion ist in der Summe u(0,t) deshalb unsichtbar. Belegt mit einem DRITTEN, unabhaengigen Weg (pruefung/dritter_weg_netzwerk.py): eine LC-Kette aus den Kirchhoffschen Gesetzen, ohne jeden Reflexionsfaktor, deckt sich in fuenf Faellen auf 4e-3 V.",
+  "1.6: Amplitudenbeschriftung erkennt jetzt die STUFEN eines Impulses. Am Leerlauf ueberlagern sich hinlaufender und ruecklaufender Impuls zu einer zweistufigen Figur (1 V und 2 V); bisher stand der Hoechstwert 2,000 V in der geometrischen Mitte des ganzen Bereichs, also ueber der 1-V-Stufe, und die 1-V-Stufe trug keine Zahl. Jede Stufe bekommt jetzt ihre eigene Zahl an ihrer eigenen Mitte; eine glatte Kurve ohne Kanten (Gaussimpuls) bleibt eine Stufe. Die Rechnung war unveraendert richtig: beide Wege decken sich am Leerlauf, am Kurzschluss und bei freiem Z_a auf besser als 1e-14 V.",
   "1.1: Quellenwiderstand als beschriftetes Eingabefeld mit Vorgaben 0 und Z_w; Oszilloskop mit Achsenmarken, Zeitzeiger und Erklaerung",
   "1.2: Wellenwiderstand, v und tau0 live bei der Leitung; Knoepfe R_i = Z_w, Z_a = Z_w (als Wert) und beide anpassen; Impulsdauer mit Impulslaenge v*T; Gaussimpuls nach Gl. 7.1 mit sigma(t)",
   "1.4: Reiter Rechenweg — jeder Schritt der Simulation mit seiner Gleichungsnummer und den eingestellten Zahlen (ZURUECKGEZOGEN: die Hilfsfunktion des Reiters hiess schritt() wie der Zeitschritt des Labors und hat ihn ueberschrieben — die Seite rechnete nicht mehr)",
@@ -44,7 +24,7 @@
  ],
  "pruefung": "labor/vollprobe.js (alle Knoepfe und Eingaben), labor/pruefe_seite.js (Abnahme im Browser), labor/pruefe_kern.js (Node) gegen pruefung/impuls_auf_leitung.py: <= 3e-14 V in zehn Faellen (sechs Rechteck, ein Gauss, drei Verzweigung); pruefung/abdeckung.py weist nach, dass alle 18 Rechenregeln dieser Seite und alle 92 Gleichungen des Manuskripts mit dem CAS nachgerechnet sind"
 }</script>
-<title>Telegraphen-Labor · Fassung 1.5</title>
+<title>Telegraphen-Labor · Fassung 1.8</title>
 <style>
 :root{--tinte:#1c1f24;--flaeche:#fff;--rand:#d6dae0;--grau:#5b6270;--akzent:#1f5fa8;--hinter:#f4f5f7}
 *{box-sizing:border-box} body{margin:0;background:var(--hinter);color:var(--tinte);font:15px/1.5 system-ui,Segoe UI,Roboto,sans-serif}
@@ -83,7 +63,7 @@ canvas{width:100%;background:#14171c;border-radius:6px;display:block}
 .warum{font-size:13px;color:var(--grau);margin-top:3px}
 .nz{font-family:ui-monospace,Consolas,monospace}
 </style>
-<header class="kopf"><div class="marke">Telegraphen-Labor<span>Stand 28.10.2026 · Fassung 1.5 — Impuls auf der Leitung, gerechnet nach den Gleichungen des Manuskripts</span></div>
+<header class="kopf"><div class="marke">Telegraphen-Labor<span>Stand 29.10.2026 · Fassung 1.8 — Impuls auf der Leitung, gerechnet nach den Gleichungen des Manuskripts</span></div>
 <nav class="reiter"><button id="r-labor" class="an" onclick="zeige('labor')">Labor</button><button id="r-stern" onclick="zeige('stern')">Verzweigung</button><button id="r-weg" onclick="zeige('weg')">Rechenweg</button><button id="r-doku" onclick="zeige('doku')">Manuskript</button></nav></header>
 <div id="ansicht-labor">
  <div>
@@ -103,6 +83,8 @@ canvas{width:100%;background:#14171c;border-radius:6px;display:block}
    <label>Z_a / Ω (bei „Wert")<input type="number" id="Za" value="100" step="10" min="0"></label>
    <div class="zeile"><button class="k leise" onclick="setzeZa()">Z_a = Z_w übernehmen</button><button class="k leise" onclick="setzeRi();setzeZa()">R_i und Z_a = Z_w (beide anpassen)</button></div>
    <div class="hinweis" id="zaAnzeige">—</div>
+   <label><input type="checkbox" id="teile" checked> hin- und rücklaufende Welle einzeln zeigen</label>
+   <div class="hinweis" id="quelleAnzeige">—</div>
   </div>
   <div class="karte"><h3>Zeitlupe</h3>
    <label>Dargestellte Zeit je Sekunde: <span id="zlText">2 ns/s</span><input type="range" id="zl" min="0.2" max="20" step="0.2" value="2"></label>
@@ -169,7 +151,7 @@ canvas{width:100%;background:#14171c;border-radius:6px;display:block}
 Gleichungen zum Impuls auf der Leitung</h1>
 <p class="subtitle">Zwei getrennte, geschlossene Lösungswege: Laplace in
 der Zeit mit dem Verschiebungssatz, und die doppelte
-Laplace-Transformation. Fassung 1.4, 28. Oktober 2026</p>
+Laplace-Transformation. Fassung 1.5, 29. Oktober 2026</p>
 <p class="author">Prof. Dr.-Ing. Ralph Wystup, M.Sc. — erarbeitet
 zusammen mit der KI (Claude, Anthropic); jede Gleichung mit einem
 CAS-Skript nachgerechnet</p>
@@ -1395,13 +1377,13 @@ Integrale (6.19)/(6.20) nach (Posten „Stoßstelle”, „Verzweigung”,
 Abdeckungsnachweis</h2>
 <p><code>pruefung/cas_telegraphengleichung.py</code> (sympy) rechnet
 jede Gleichung dieses Manuskripts nach und sagt je Posten RICHTIG oder
-FALSCH; Ergebnis <strong>115 von 115 RICHTIG</strong>. Jeder Posten
+FALSCH; Ergebnis <strong>121 von 121 RICHTIG</strong>. Jeder Posten
 nennt in seinem Namen die Gleichungsnummern, die er prüft, und
 <code>pruefung/abdeckung.py</code> hält diese Liste gegen alle
 nummerierten Gleichungen des Manuskripts und gegen die Rechenregeln der
 Laborseite. Sein Ergebnis:</p>
 <blockquote>
-<p><strong>Abdeckung vollständig: alle 92 Gleichungen des Manuskripts
+<p><strong>Abdeckung vollständig: alle 96 Gleichungen des Manuskripts
 und alle 18 Rechenregeln der Laborseite sind mit dem CAS
 nachgerechnet.</strong></p>
 </blockquote>
@@ -1957,6 +1939,132 @@ und beide Randknoten.</p>
 ist, prüft <code>pruefung/abdeckung.py</code> mit: Es liest die
 Gleichungsnummern aus dem Reiter, aus dem Rechenkern und aus diesem
 Manuskript und hält alle drei gegen die Liste der CAS-Posten.</p>
+<h2 id="ein-dritter-unabhängiger-weg-die-leitung-als-lc-kette">Ein
+dritter, unabhängiger Weg: die Leitung als LC-Kette</h2>
+<p>Am 29.10.2026 kam der Befund, der rücklaufende Impuls werde an der
+Quelle falsch reflektiert. Die beiden Wege dieses Textes konnten die
+Frage nicht entscheiden, und zwar aus einem grundsätzlichen Grund: Die
+geschlossene Strahlensumme (3.24) und das Zeitschrittverfahren benutzen
+<strong>denselben</strong> Reflexionsfaktor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>q</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>i</mi></msub><mo>−</mo><msub><mi>Z</mi><mi>w</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>i</mi></msub><mo>+</mo><msub><mi>Z</mi><mi>w</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">r_q = (R_i - Z_w)/(R_i + Z_w)</annotation></semantics></math>.
+Wäre der falsch, so zeigten beide übereinstimmend dasselbe Falsche. Ihr
+Abstand von
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mi>−</mi><mn>15</mn></mrow></msup><annotation encoding="application/x-tex">10^{-15}</annotation></semantics></math>
+V beweist, dass beide richtig <em>rechnen</em>, nicht dass die
+Randbedingung richtig <em>ist</em>.</p>
+<p>Es braucht also einen Weg, der von Wellen und Reflexionsfaktoren
+nichts weiß. Die Leitung wird dazu durch eine Kette aus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+Gliedern ersetzt — Längsinduktivität
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>′</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">L&#39;\,\mathrm{d}x</annotation></semantics></math>,
+Querkapazität
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>′</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">C&#39;\,\mathrm{d}x</annotation></semantics></math>
+— und es werden nur die beiden Kirchhoffschen Gesetze
+hingeschrieben:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>′</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">d</mi><mi>x</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi mathvariant="normal">d</mi><msub><mi>i</mi><mi>k</mi></msub></mrow><mrow><mi mathvariant="normal">d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><msub><mi>u</mi><mi>k</mi></msub><mo>−</mo><msub><mi>u</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mo>=</mo><mn>0</mn><mi>…</mi><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L&#39;\,\mathrm{d}x\,\frac{\mathrm{d}i_k}{\mathrm{d}t} = u_k - u_{k+1}, \qquad k = 0 \dots N-1 \tag{7.6}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>′</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">d</mi><mi>x</mi><mspace width="0.167em"></mspace><mfrac><mrow><mi mathvariant="normal">d</mi><msub><mi>u</mi><mi>k</mi></msub></mrow><mrow><mi mathvariant="normal">d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><msub><mi>i</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>i</mi><mi>k</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mo>=</mo><mn>1</mn><mi>…</mi><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">C&#39;\,\mathrm{d}x\,\frac{\mathrm{d}u_k}{\mathrm{d}t} = i_{k-1} - i_k, \qquad k = 1 \dots N-1 \tag{7.7}</annotation></semantics></math></p>
+<p>Am ersten Knoten sitzt die Quelle als <strong>wirkliche
+Schaltung</strong>: eine Spannungsquelle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">e(t)</annotation></semantics></math>
+mit Reihenwiderstand
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>i</mi></msub><annotation encoding="application/x-tex">R_i</annotation></semantics></math>,
+die in eine halbe Zelle speist.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>C</mi><mi>′</mi><mspace width="0.167em"></mspace><mi mathvariant="normal">d</mi><mi>x</mi></mrow><mn>2</mn></mfrac><mspace width="0.167em"></mspace><mfrac><mrow><mi mathvariant="normal">d</mi><msub><mi>u</mi><mn>0</mn></msub></mrow><mrow><mi mathvariant="normal">d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msub><mi>u</mi><mn>0</mn></msub></mrow><msub><mi>R</mi><mi>i</mi></msub></mfrac><mo>−</mo><msub><mi>i</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\frac{C&#39;\,\mathrm{d}x}{2}\,\frac{\mathrm{d}u_0}{\mathrm{d}t}
+  = \frac{e(t) - u_0}{R_i} - i_0 \tag{7.8}</annotation></semantics></math></p>
+<p>Kein Reflexionsfaktor steht in (7.6) bis (7.8). Trotzdem muss sich
+einer ergeben, denn die Schaltung weiß ja nicht, dass sie keinen kennen
+soll. Dass es genau
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>q</mi></msub><annotation encoding="application/x-tex">r_q</annotation></semantics></math>
+ist, sieht man, wenn man die Randbedingung
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msub><mi>R</mi><mi>i</mi></msub><mspace width="0.167em"></mspace><mi>i</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u(0,t) = e(t) - R_i\,i(0,t)</annotation></semantics></math>
+in die beiden Wellen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><msup><mi>u</mi><mo>+</mo></msup><mo>+</mo><msup><mi>u</mi><mo>−</mo></msup></mrow><annotation encoding="application/x-tex">u = u^+ + u^-</annotation></semantics></math>
+und
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>u</mi><mo>+</mo></msup><mo>−</mo><msup><mi>u</mi><mo>−</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><msub><mi>Z</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">i = (u^+ - u^-)/Z_w</annotation></semantics></math>
+zerlegt:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>u</mi><mo>+</mo></msup><mo>=</mo><munder><munder><mfrac><msub><mi>Z</mi><mi>w</mi></msub><mrow><msub><mi>R</mi><mi>i</mi></msub><mo>+</mo><msub><mi>Z</mi><mi>w</mi></msub></mrow></mfrac><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">Einspeisung</mtext></munder><mspace width="0.167em"></mspace><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.278em"></mspace><mo>+</mo><mspace width="0.278em"></mspace><munder><munder><mfrac><mrow><msub><mi>R</mi><mi>i</mi></msub><mo>−</mo><msub><mi>Z</mi><mi>w</mi></msub></mrow><mrow><msub><mi>R</mi><mi>i</mi></msub><mo>+</mo><msub><mi>Z</mi><mi>w</mi></msub></mrow></mfrac><mo accent="true">⏟</mo></munder><msub><mi>r</mi><mi>q</mi></msub></munder><mspace width="0.167em"></mspace><msup><mi>u</mi><mo>−</mo></msup></mrow><annotation encoding="application/x-tex">u^+ = \underbrace{\frac{Z_w}{R_i + Z_w}}_{\text{Einspeisung}}\,e(t)
+      \;+\; \underbrace{\frac{R_i - Z_w}{R_i + Z_w}}_{\textstyle r_q}\,u^- \tag{7.9}</annotation></semantics></math></p>
+<p>Der erste Summand ist der Vorfaktor von (3.24), der zweite der
+gesuchte Reflexionsfaktor. Beide folgen aus der Schaltung und sind nicht
+hineingesteckt.</p>
+<p>Gerechnet wird die Kette mit einem allgemeinen Integrator mit
+Schrittweitensteuerung, nicht mit dem Leapfrog-Verfahren des zweiten
+Weges — sonst prüfte man wieder dasselbe Verfahren. Zwei Entscheidungen
+machen den Vergleich erst aussagekräftig:</p>
+<ul>
+<li><strong>Ein Gaußimpuls statt eines Rechtecks.</strong> Eine Kette
+aus endlich vielen Gliedern bildet eine senkrechte Kante nicht ab: Sie
+zerläuft und schwingt nach (Gitterdispersion). Das wäre ein Fehler des
+Prüfmittels, nicht der Sache. Ein glatter Impuls ist bandbegrenzt und
+kommt sauber durch.</li>
+<li><strong>Nur endliche
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>i</mi></msub><annotation encoding="application/x-tex">R_i</annotation></semantics></math>.</strong>
+Für
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R_i = 0</annotation></semantics></math>
+wäre (7.8) keine Differentialgleichung mehr, sondern eine
+Zwangsbedingung
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u_0 = e(t)</annotation></semantics></math>;
+der Grenzfall folgt aus den endlichen Werten.</li>
+</ul>
+<p>Das Ergebnis, mit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>160</mn></mrow><annotation encoding="application/x-tex">N = 160</annotation></semantics></math>
+Gliedern und fünf Fällen —
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>i</mi></msub><mo>=</mo><msub><mi>Z</mi><mi>w</mi></msub><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">R_i = Z_w/3</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Z</mi><mi>w</mi></msub><annotation encoding="application/x-tex">Z_w</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><msub><mi>Z</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">3Z_w</annotation></semantics></math>
+am offenen Ende sowie
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>a</mi></msub><mo>=</mo><mn>3</mn><msub><mi>Z</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">Z_a = 3Z_w</annotation></semantics></math>
+und
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>a</mi></msub><mo>=</mo><msub><mi>Z</mi><mi>w</mi></msub><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">Z_a = Z_w/2</annotation></semantics></math>
+—, ist in <code>pruefung/dritter_weg_netzwerk.py</code> nachzulesen: Der
+größte Abstand zwischen Kettennetzwerk und Wellenrechnung beträgt
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>,</mo><mn>2</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">4{,}2 \cdot 10^{-3}</annotation></semantics></math>
+V bei
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">E_0 = 1</annotation></semantics></math>
+V, also 0,4 Prozent, und er sitzt dort, wo der Impuls am steilsten ist.
+Er geht mit wachsendem
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+zurück; es ist die endliche Gliederzahl der Kette, kein systematischer
+Unterschied. Die Quellreflexion ist damit auf einem Weg bestätigt, der
+sie nicht voraussetzt.</p>
+<h2 id="warum-die-richtige-reflexion-an-der-quelle-unsichtbar-sein-kann">Warum
+die richtige Reflexion an der Quelle unsichtbar sein kann</h2>
+<p>Derselbe Befund hatte noch einen zweiten Teil, und der betrifft nicht
+die Rechnung, sondern das Auge. Bei einer idealen Quelle ist
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R_i = 0</annotation></semantics></math>
+und damit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>q</mi></msub><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">r_q = -1</annotation></semantics></math>:
+Die Quelle hält den Knoten auf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">e(t)</annotation></semantics></math>
+und wirkt für die ankommende Welle wie ein Kurzschluss. Die
+zurückgeworfene Welle ist dann genau das Negative der ankommenden, und
+ihre Summe ist an der Quelle <strong>null</strong>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>u</mi><mo>−</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msup><mi>u</mi><mo>+</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>u</mi><mo>−</mo></msup><mo>−</mo><msup><mi>u</mi><mo>−</mo></msup><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">u(0,t) = u^-(0,t) + u^+(0,t) = u^- - u^- = 0 .</annotation></semantics></math></p>
+<p>Im Bild der Spannung
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u(x,t)</annotation></semantics></math>
+verschwindet der Impuls also scheinbar, sobald er die Quelle erreicht,
+und taucht ein Stück später mit umgekehrtem Vorzeichen wieder auf. Das
+sieht nach einem Fehler aus und ist keiner — es ist dieselbe Erscheinung
+wie der Spannungsknoten vor einem Kurzschluss.</p>
+<p>Seit Fassung 1.7 zeichnet die Laborseite deshalb auf Wunsch die
+beiden Wellen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>u</mi><mo>+</mo></msup><annotation encoding="application/x-tex">u^+</annotation></semantics></math>
+und
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>u</mi><mo>−</mo></msup><annotation encoding="application/x-tex">u^-</annotation></semantics></math>
+einzeln, und unter dem Abschluss steht in Zahlen, was die Quelle gerade
+tut: was ankommt, was zurückgeworfen wird, die Summe und
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>q</mi></msub><annotation encoding="application/x-tex">r_q</annotation></semantics></math>.
+Beim Rücklauf am Leerlauf liest man dort ab: ankommend
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">-1{,}000</annotation></semantics></math>
+V, zurückgeworfen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>1</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">+1{,}000</annotation></semantics></math>
+V, Summe
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">0{,}000</annotation></semantics></math>
+V,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>q</mi></msub><mo>=</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>0000</mn></mrow><annotation encoding="application/x-tex">r_q = -1{,}0000</annotation></semantics></math>.
+Die Zerlegung deckt sich mit der bisherigen Summe Zeile für Zeile auf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0{,}0</annotation></semantics></math>
+V; der Rechenkern ist unverändert.</p>
 <h1 id="was-beim-nachrechnen-gefunden-wurde">Was beim Nachrechnen
 gefunden wurde</h1>
 <p>Jeder Fehler steht hier mit dem Grund, warum er zuerst durchging —
@@ -2147,6 +2255,23 @@ const LABOR = (() => {
     for (let n = 0; n <= nmax; n++) { u += g * (e(t - (2 * n * l + x) / v) + ra * e(t - (2 * (n + 1) * l - x) / v)); g *= rq * ra; if (Math.abs(g) < 1e-12) break; }
     return Zw / (Ri + Zw) * u;
   }
+  // Dieselbe Summe wie Gl. 3.24, aber nach HIN- und RUECKLAUFENDER Welle getrennt. Neu am 29.10.2026 auf
+  // seinen Befund „der rücklaufende Impuls wird an der Quelle falsch reflektiert": Bei R_i = 0 loescht die
+  // ankommende Welle sich mit der zurueckgeworfenen an der Quelle zu null — die Reflexion ist richtig, aber
+  // in der Summe u(x,t) unsichtbar. Getrennt gezeichnet sieht man beide. geschlossen() bleibt unveraendert;
+  // hin + rueck ergibt Zeile fuer Zeile wieder geschlossen().
+  function geschlossenTeile(p, x, t, nmax = 12) {
+    const { Zw, v, l, Ri, Za, e } = p;
+    const ra = (Za === Infinity) ? 1 : (Za - Zw) / (Za + Zw), rq = (Ri - Zw) / (Ri + Zw);
+    let hin = 0, rueck = 0, g = 1;
+    for (let n = 0; n <= nmax; n++) {
+      hin   += g * e(t - (2 * n * l + x) / v);                       // laeuft nach +x
+      rueck += g * ra * e(t - (2 * (n + 1) * l - x) / v);            // laeuft nach -x
+      g *= rq * ra; if (Math.abs(g) < 1e-12) break;
+    }
+    const k = Zw / (Ri + Zw);
+    return { hin: k * hin, rueck: k * rueck, summe: k * (hin + rueck), ra, rq };
+  }
   function zeitschritt(p, N) {                     // Weg 2: Zustand, Schritt für Schritt
     const { Zw, v, l, Ri, Za, e, L1, C1 } = p; const dx = l / N, dt = dx / v;
     const u = new Float64Array(N + 1), i = new Float64Array(N); let n = 0;
@@ -2213,7 +2338,7 @@ const LABOR = (() => {
       }
     };
   }
-  return { belaege, quelle, geschlossen, zeitschritt, stern, verzweigungStrahlen, verzweigungGeschlossen, verzweigungZeitschritt };
+  return { belaege, quelle, geschlossen, geschlossenTeile, zeitschritt, stern, verzweigungStrahlen, verzweigungGeschlossen, verzweigungZeitschritt };
 })();
 
 const $=id=>document.getElementById(id);
@@ -2265,18 +2390,58 @@ function spannungsskala(c,x0,x1,ty,umax,einheit){
   return d;
 }
 /* Jeder zusammenhängende Bereich mit |u| über der Schwelle ist ein Impuls; sein Scheitelwert wird angeschrieben. */
-function impulse(ys,schwelle){ const aus=[]; let k=0;
-  while(k<ys.length){ if(Math.abs(ys[k])>schwelle){ let j=k,best=k;
-      while(j<ys.length && Math.abs(ys[j])>schwelle){ if(Math.abs(ys[j])>Math.abs(ys[best])) best=j; j++; }
-      aus.push({von:k, bis:j-1, mitte:(k+j-1)/2, wert:ys[best]}); k=j; } else k++; }
+function impulse(ys,schwelle){
+  /* Findet die Impulse in einer Kurve und — das ist der Punkt — ihre STUFEN.
+     Befund vom 29.10.2026 (sein Wort: „musst du prüfen ob der impuls im nichtabgeschlossenen anfang und
+     ende richtig addiert wird, das sieht sehr komisch aus"): Die erste Fassung nahm einen zusammenhängenden
+     Bereich über der Schwelle, suchte darin den Höchstwert und schrieb ihn in die geometrische MITTE des
+     Bereichs. Am Leerlauf überlagern sich hinlaufender und rücklaufender Impuls aber zu einer zweistufigen
+     Figur: 1 V auf dem noch nicht überlagerten Stück, 2 V auf dem überlagerten. Dann stand „2,000 V" mitten
+     über der 1-V-Stufe, und die 1-V-Stufe trug gar keine Zahl. Die Rechnung war richtig (beide Wege decken
+     sich auf 7e-15 V), die Beschriftung war falsch.
+     Jetzt wird jeder Bereich an seinen KANTEN zerlegt: Ein Sprung von mehr als dh zwischen zwei Stützstellen
+     beginnt eine neue Stufe. Jede Stufe, die breit genug ist, bekommt ihre eigene Zahl an ihrer eigenen
+     Mitte. Eine glatte Kurve ohne Kanten (Gaußimpuls) bleibt eine einzige Stufe — dort ändert sich nichts. */
+  const aus=[]; let gross=0;
+  for(const y of ys) if(Math.abs(y)>gross) gross=Math.abs(y);
+  const dh = Math.max(schwelle, 0.06*gross);          // ab dieser Sprunghöhe beginnt eine neue Stufe
+  const mindest = Math.max(3, Math.round(ys.length*0.02));   // schmaler als das ist eine Flanke, keine Stufe
+  let k=0;
+  while(k<ys.length){
+    if(Math.abs(ys[k])<=schwelle){ k++; continue; }
+    let j=k; while(j<ys.length && Math.abs(ys[j])>schwelle) j++;      // zusammenhängender Bereich [k, j-1]
+    const stufen=[]; let a=k;
+    for(let i=k;i<j;i++){
+      if(i+1<j && Math.abs(ys[i+1]-ys[i])>dh){ stufen.push([a,i]); a=i+1; }
+    }
+    stufen.push([a,j-1]);
+    for(const [v,bq] of stufen){
+      if(bq-v+1 < mindest) continue;                                   // Flanke, nicht beschriften
+      let best=v; for(let i=v;i<=bq;i++) if(Math.abs(ys[i])>Math.abs(ys[best])) best=i;
+      aus.push({von:v, bis:bq, mitte:(v+bq)/2, wert:ys[best]});
+    }
+    if(!aus.length || aus[aus.length-1].bis < k) {                     // nur Flanken: dann wie bisher
+      let best=k; for(let i=k;i<j;i++) if(Math.abs(ys[i])>Math.abs(ys[best])) best=i;
+      aus.push({von:k, bis:j-1, mitte:(k+j-1)/2, wert:ys[best]});
+    }
+    k=j;
+  }
   return aus; }
-function beschrifteImpulse(c,ys,tx,ty,farbe,schwelle,nachkomma,yFrei){
+function beschrifteImpulse(c,ys,tx,ty,farbe,schwelle,nachkomma,yFrei,xMin,xMax){
   c.font='bold 12px system-ui'; c.textAlign='center'; c.fillStyle=farbe;
   const frei = yFrei===undefined?30:yFrei;                 // darüber liegt die Überschrift des Bildes
-  for(const q of impulse(ys,schwelle)){ const x=tx(q.mitte), y=ty(q.wert);
+  for(const q of impulse(ys,schwelle)){
+    const text = q.wert.toFixed(nachkomma===undefined?3:nachkomma)+' V';
+    const halb = c.measureText(text).width/2 + 2;
+    let x=tx(q.mitte); const y=ty(q.wert);
+    // Eine Stufe am Rand (etwa die Verdopplung am Leerlauf) sitzt dicht an der Kante; die Zahl wird
+    // hineingeschoben, damit sie nicht halb abgeschnitten dasteht. Der Strich bleibt an der Stufe.
+    if(xMin!==undefined) x=Math.max(x, xMin+halb);
+    if(xMax!==undefined) x=Math.min(x, xMax-halb);
     const yT = (q.wert>=0 && y-7>frei) ? y-7 : y+16;       // in die Lücke schreiben, nicht über den Rand
-    c.fillText(q.wert.toFixed(nachkomma===undefined?3:nachkomma)+' V', x, yT);
-    c.strokeStyle=farbe; c.lineWidth=1; c.beginPath(); c.moveTo(x-5,y); c.lineTo(x+5,y); c.stroke(); }
+    c.fillText(text, x, yT);
+    const xs=tx(q.mitte);
+    c.strokeStyle=farbe; c.lineWidth=1; c.beginPath(); c.moveTo(xs-5,y); c.lineTo(xs+5,y); c.stroke(); }
   return impulse(ys,schwelle).length; }
 function zeichne(){
   if(!P) return;
@@ -2287,11 +2452,38 @@ function zeichne(){
   const dL=spannungsskala(c,x0,x1,tyL,umax,'V');
   c.fillStyle='#c7ccd4'; c.font='12px system-ui'; c.textAlign='left'; c.fillText('x = 0 (Quelle, R_i = '+P.Ri+' Ω)',x0,h-8); c.textAlign='right'; c.fillText('x = l ('+($('art').selectedOptions[0].text)+')',x1,h-8);
   c.fillText('t = '+(tAnzeige*1e9).toFixed(2)+' ns   Raster '+dL.toFixed(2)+' V',x1,18);
+  {  // Was die Quelle in diesem Augenblick tut -- in Zahlen, nicht nur im Bild
+    const q=LABOR.geschlossenTeile(P,0,tAnzeige);
+    const a=$('quelleAnzeige');
+    if(a) a.textContent='An der Quelle (x = 0): ankommend u⁻ = '+q.rueck.toFixed(3)+' V, '
+      +'zurückgeworfen u⁺ = '+q.hin.toFixed(3)+' V, Summe u(0,t) = '+q.summe.toFixed(3)+' V'
+      +'   (r_q = '+q.rq.toFixed(4)+'). Bei R_i = 0 ist r_q = −1: die Quelle hält den Knoten, '
+      +'beide Wellen löschen sich dort, die Reflexion ist in u(0,t) unsichtbar.';
+  }
+  // Hin- und ruecklaufende Welle einzeln (Gl. 3.24, nach den beiden Gliedern getrennt).
+  // Eingebaut am 29.10.2026 auf seinen Befund „der rücklaufende Impuls wird an der Quelle falsch
+  // reflektiert". Er wird nicht falsch reflektiert — bei R_i = 0 loescht die ankommende Welle sich an der
+  // Quelle mit der zurueckgeworfenen zu null, die Summe u(x,t) ist dort also 0, und die Reflexion ist in
+  // der Summe unsichtbar. Getrennt gezeichnet sieht man beide Wellen und kann die Reflexion ablesen.
+  // Nachgewiesen mit einem DRITTEN, unabhaengigen Weg (pruefung/dritter_weg_netzwerk.py): einer LC-Kette,
+  // die keine Reflexionsfaktoren kennt, sondern nur die Kirchhoffschen Gesetze; Abstand 4e-3 V.
+  if($('teile') && $('teile').checked){
+    const hin=[], rueck=[];
+    for(let k=0;k<=300;k++){ const q=LABOR.geschlossenTeile(P,P.l*k/300,tAnzeige); hin.push(q.hin); rueck.push(q.rueck); }
+    for(const [ys,farbe,strich] of [[hin,'#4fd48a',[3,3]],[rueck,'#f0a860',[3,3]]]){
+      c.strokeStyle=farbe; c.lineWidth=1.4; c.setLineDash(strich); c.beginPath();
+      for(let k=0;k<=300;k++){ const px=x0+(x1-x0)*k/300, py=tyL(ys[k]); k?c.lineTo(px,py):c.moveTo(px,py);} c.stroke();
+    }
+    c.setLineDash([]);
+    c.font='11px system-ui'; c.textAlign='left';
+    c.fillStyle='#4fd48a'; c.fillText('— hinlaufend u⁺', x0+6, 34);
+    c.fillStyle='#f0a860'; c.fillText('— rücklaufend u⁻', x0+6, 48);
+  }
   // Weg 1 (geschlossen) an 300 Stellen
   const w1=[]; for(let k=0;k<=300;k++) w1.push(LABOR.geschlossen(P,P.l*k/300,tAnzeige));
   c.strokeStyle='#4ea1ff'; c.lineWidth=2; c.beginPath();
   for(let k=0;k<=300;k++){ const px=x0+(x1-x0)*k/300, py=tyL(w1[k]); k?c.lineTo(px,py):c.moveTo(px,py);} c.stroke();
-  beschrifteImpulse(c,w1,k=>x0+(x1-x0)*k/300,tyL,'#9ad0ff',0.01*E0);
+  beschrifteImpulse(c,w1,k=>x0+(x1-x0)*k/300,tyL,'#9ad0ff',0.01*E0,undefined,undefined,x0,x1);
   // Weg 2 (Zeitschritt)
   c.strokeStyle='#ffb347'; c.setLineDash([6,5]); c.beginPath();
   for(let k=0;k<=N;k++){ const px=x0+(x1-x0)*k/N, py=yM-Z.u[k]*sk; k?c.lineTo(px,py):c.moveTo(px,py);} c.stroke(); c.setLineDash([]);
@@ -2340,7 +2532,7 @@ function sternZeichne(){
     for(let j=0;j<=200;j++){ const px=x0+(x1-x0)*j/200, py=tyS(w1s[j]); j?c.lineTo(px,py):c.moveTo(px,py);} c.stroke();
     c.strokeStyle='#ffb347'; c.setLineDash([6,5]); c.beginPath();
     for(let j=0;j<=NS;j++){ const px=x0+(x1-x0)*j/NS, py=tyS(SZ.u[k][j]); j?c.lineTo(px,py):c.moveTo(px,py);} c.stroke(); c.setLineDash([]);
-    beschrifteImpulse(c,w1s,j=>x0+(x1-x0)*j/200,tyS,'#9ad0ff',0.01*E0); }
+    beschrifteImpulse(c,w1s,j=>x0+(x1-x0)*j/200,tyS,'#9ad0ff',0.01*E0,undefined,undefined,x0,x1); }
   c.fillStyle='#c7ccd4'; c.textAlign='right'; c.fillText('t = '+(sT*1e9).toFixed(2)+' ns   R = '+SR.toFixed(2)+' Ω   Raster '+dS.toFixed(2)+' V',x1,14);
   // Oszilloskop
   const es=$('sternSzene'), w2=es.clientWidth, h2=+es.getAttribute('height'); es.width=w2*dpr; es.height=h2*dpr; es.style.height=h2+'px';
@@ -2473,7 +2665,7 @@ function PRUEFSTAND_abweichung(){
   return dmax.toExponential(2)+' V über die ganze Leitung, bei t = '+(tAnzeige*1e9).toFixed(2)+' ns';
 }
 /* Diagnoseschnittstelle (Hausregel: jede Seite trägt window.PRUEFSTAND) */
-window.PRUEFSTAND={ fassung:'1.5', kern:LABOR,
+window.PRUEFSTAND={ fassung:'1.8', kern:LABOR,
   stellen:(o)=>{ for(const k in o){ if($(k)) $(k).value=o[k]; } halt(); neu(); return stand(); },
   rechne:(schritte)=>{ halt(); schritt(schritte||1); const w1=[],w2=[]; for(let k=0;k<=N;k++){ w1.push(LABOR.geschlossen(P,P.l*k/N,tAnzeige)); w2.push(Z.u[k]); }
      let d=0; for(let k=0;k<=N;k++) d=Math.max(d,Math.abs(w1[k]-w2[k])); return {t_ns:tAnzeige*1e9, max_abw_V:d, u_ende_w1:w1[N], u_ende_w2:w2[N], u_mitte_w1:w1[N/2]}; },

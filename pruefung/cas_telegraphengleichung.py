@@ -531,5 +531,54 @@ pruefe("Belaege Zahlen d=10 mm, r0=0,5 mm: Naeherung und exakte Form liegen 0,08
        f"C' {C_n*1e12:.4f} gegen {C_e*1e12:.4f} pF/m, L' {L_n*1e6:.4f} gegen {L_e*1e6:.4f} uH/m")
 
 
+# ---------------------------------------------------------------------------------------------------------
+# Dritter, unabhaengiger Weg: die Leitung als LC-Kette (Abschnitt „Pruefung durch Rechnung", Gl. 7.6 bis 7.9)
+# Der Sinn dieses Wegs ist, dass er KEINEN Reflexionsfaktor voraussetzt. Hier wird nachgerechnet, dass er
+# trotzdem genau r_q = (R_i - Z_w)/(R_i + Z_w) und den Einspeisefaktor Z_w/(R_i + Z_w) hergibt.
+# ---------------------------------------------------------------------------------------------------------
+_t, _x, _dx = sp.symbols("t x dx", positive=True)
+_Lp, _Cp, _Ri, _Zw = sp.symbols("L_s C_s R_i Z_w", positive=True)
+_u = sp.Function("u"); _i = sp.Function("i")
+
+# (7.6)/(7.7): die Kettengleichungen gehen fuer dx -> 0 in die Leitungsgleichungen (2.3)/(2.6) ueber.
+# Taylor wie bei (2.2)->(2.3): u(x+dx) = u(x) + dx u_x + O(dx^2)
+_reihe_u = sp.series(_u(_x + _dx, _t), _dx, 0, 2).removeO()
+_reihe_i = sp.series(_i(_x + _dx, _t), _dx, 0, 2).removeO()
+pruefe("(7.6) Kettengleichung L' dx di/dt = u_k - u_(k+1) wird fuer dx->0 zu L' di/dt = -du/dx (= Gl. 2.3)",
+       sp.simplify(sp.limit((_u(_x, _t) - _reihe_u)/_dx, _dx, 0) + sp.diff(_u(_x, _t), _x)) == 0,
+       "Taylor: u(x+dx) = u(x) + dx du/dx + O(dx^2)")
+pruefe("(7.7) Kettengleichung C' dx du/dt = i_(k-1) - i_k wird fuer dx->0 zu C' du/dt = -di/dx (= Gl. 2.6)",
+       sp.simplify(sp.limit((_i(_x, _t) - _reihe_i)/_dx, _dx, 0) + sp.diff(_i(_x, _t), _x)) == 0,
+       "Taylor: i(x+dx) = i(x) + dx di/dx + O(dx^2)")
+
+# (7.8): der Quellknoten als halbe Zelle. Fuer dx -> 0 bleibt die Klemmenbedingung u(0) = e - R_i i(0).
+_e, _u0, _i0 = sp.symbols("e u_0 i_0")
+_knoten = sp.Eq(_Cp*_dx/2 * sp.Symbol("du0dt"), (_e - _u0)/_Ri - _i0)
+pruefe("(7.8) Quellknoten: fuer dx->0 bleibt die Klemmenbedingung u(0) = e - R_i i(0)",
+       sp.simplify(sp.solve(_knoten.subs(_dx, 0), _u0)[0] - (_e - _Ri*_i0)) == 0)
+
+# (7.9): aus der Klemmenbedingung folgen Einspeisefaktor und Reflexionsfaktor -- ohne sie vorauszusetzen.
+_up, _um = sp.symbols("u^+ u^-")
+_rand = sp.Eq(_up + _um, _e - _Ri*(_up - _um)/_Zw)             # u = u+ + u-, i = (u+ - u-)/Z_w
+_loes = sp.solve(_rand, _up)[0]
+_soll = _Zw/(_Ri + _Zw)*_e + (_Ri - _Zw)/(_Ri + _Zw)*_um
+pruefe("(7.9) aus u(0)=e-R_i i(0) folgt u+ = Z_w/(R_i+Z_w) e + (R_i-Z_w)/(R_i+Z_w) u- "
+       "(Einspeisefaktor von Gl. 3.24 und r_q von Gl. 3.23)",
+       sp.simplify(_loes - _soll) == 0, sp.simplify(_loes))
+pruefe("(7.9) Sonderfaelle: R_i=0 gibt r_q=-1 (ideale Quelle), R_i=Z_w gibt r_q=0 (angepasst), "
+       "R_i->unendlich gibt r_q=+1 (offene Quelle)",
+       sp.simplify(((_Ri - _Zw)/(_Ri + _Zw)).subs(_Ri, 0) + 1) == 0
+       and sp.simplify(((_Ri - _Zw)/(_Ri + _Zw)).subs(_Ri, _Zw)) == 0
+       and sp.limit((_Ri - _Zw)/(_Ri + _Zw), _Ri, sp.oo) == 1)
+# Die Zerlegung der Strahlensumme in hin- und ruecklaufende Welle (geschlossenTeile im Rechenkern)
+_n = sp.symbols("n", integer=True, nonnegative=True)
+_ra, _rq = sp.symbols("r_a r_q")
+pruefe("(3.24) Zerlegung: das erste Glied der Summe ist die hinlaufende, das zweite die ruecklaufende "
+       "Welle; ihre Summe ist wieder Gl. 3.24 (Grundlage von geschlossenTeile)",
+       sp.simplify(((_rq*_ra)**_n * sp.Symbol("E_hin") + (_rq*_ra)**_n * _ra * sp.Symbol("E_rueck"))
+                   - (_rq*_ra)**_n * (sp.Symbol("E_hin") + _ra*sp.Symbol("E_rueck"))) == 0)
+
+
+
 json.dump({"posten": posten, "gleichungen_geprueft": sorted({g for q in posten for g in q["gleichungen"]}), "alle_richtig": all(q["richtig"] for q in posten)}, open("cas_ergebnis.json", "w"), indent=1, ensure_ascii=False)
 print("ERGEBNIS:", "alle RICHTIG" if all(q["richtig"] for q in posten) else "FALSCH vorhanden", f"({len(posten)} Posten)")
