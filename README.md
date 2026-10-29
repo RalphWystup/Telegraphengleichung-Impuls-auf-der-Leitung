@@ -28,8 +28,8 @@ entzerrt auf Folien, nichts weggelassen.
 | [`Telegraphen_Labor_1.8.html`](Telegraphen_Labor_1.8.html) | das Telegraphen-Labor: Reiter Labor (Impuls, R_i, Z_a, Zeitlupe), Verzweigung (Sternpunkt 1 auf 2 mit R), Manuskript |
 | [`MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.5.pdf`](MANUSKRIPT_TELEGRAPHENGLEICHUNG_1.5.pdf) / [`.md`](MANUSKRIPT_TELEGRAPHENGLEICHUNG.md) | das Manuskript: Maxwell → Wellengleichung, Weg A, Weg B, Beläge, Stoßstellen, Prüfung, Zusammenfassung |
 | [`BEAMER_TELEGRAPHENGLEICHUNG_1.5.pdf`](BEAMER_TELEGRAPHENGLEICHUNG_1.5.pdf) | die Beamer-Fassung (16:9), gesetzt aus derselben Quelle |
-| `labor/` | der Rechenkern der Seite (`labor_kern.js`) und seine Prüfungen in Node und im Browser |
-| `pruefung/` | CAS-Skript (sympy) mit Ergebnis, Abdeckungsnachweis, Zeitbereichsrechnung mit Ergebnis, Bilderzeugung |
+| `labor/` | der Rechenkern der Seite (`labor_kern.js`), seine Prüfungen in Node und im Browser und der vollständige Durchlauf `vollprobe.js` (55 Schritte) |
+| `pruefung/` | CAS-Skript (sympy) mit Ergebnis, Abdeckungsnachweis, Zeitbereichsrechnung mit Ergebnis, Bilderzeugung und der dritte, unabhängige Weg `dritter_weg_netzwerk.py` (LC-Kette aus den Kirchhoffschen Gesetzen, ohne Reflexionsfaktoren) |
 | `bilder/` | die Bilder des Manuskripts |
 | `baue_labor.py`, `baue_beamer.py`, `beamer_kopf.tex` | die Bauskripte (pandoc, xelatex) |
 | `index.html` | leitet auf die Seite weiter, damit GitHub Pages sie unter der Adresse oben zeigt |
